@@ -1,0 +1,42 @@
+<!-- CS-5890 Homework 2       -->
+<!-- Andres Imperial          -->
+<!-- andres.imperial@live.com -->
+<!-- A02294771                -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CS 5820</title>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="js/dataLoader.js"></script>
+        <script src="js/barchart.js"></script>
+        <script src="js/update.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/main.js"></script>
+        <style>
+        </style>
+    </head>
+    <body id="body" onload="init()">
+      <div>
+        <form action="">
+          <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="update()"> Black<br>
+          <input type="checkbox" class=colorRadios value="U" alt='Blue' checked onclick="update()"> Blue<br>
+          <input type="checkbox" class=colorRadios value="G" alt='Green' checked onclick="update()"> Green<br>
+          <input type="checkbox" class=colorRadios value="R" alt='Red' checked onclick="update()"> Red<br>
+          <input type="checkbox" class=colorRadios value="W" alt='White' checked onclick="update()"> White<br>
+          <input type="checkbox" class=colorRadios value="" alt='Colorless' checked onclick="update()"> Colorless<br>
+        </form>
+        <form action="">
+          <input type="checkbox" class=typeRadios value="Creature" checked onclick="update()"> Creature<br>
+          <input type="checkbox" class=typeRadios value="Enchantment" checked onclick="update()"> Enchantment<br>
+          <input type="checkbox" class=typeRadios value="Instant" checked onclick="update()"> Instant<br>
+          <input type="checkbox" class=typeRadios value="Sorcery" checked onclick="update()"> Sorcery<br>
+          <input type="checkbox" class=typeRadios value="Artifact" checked onclick="update()"> Artifact<br>
+          <input type="checkbox" class=typeRadios value="Land" checked onclick="update()"> Land<br>
+        </form>
+      </div>
+      <svg id="barChart"/>
+    </body>
+</html>
