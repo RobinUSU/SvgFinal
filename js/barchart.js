@@ -152,4 +152,3 @@ function updateBarChart(dataSelect = 'colorIdentity', data = barChartData) {
     .text(d => `${d[1]}`)
   ;
 }
-
