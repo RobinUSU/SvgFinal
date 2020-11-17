@@ -43,18 +43,38 @@ const files = [
 
 async function loadDataset(resolve, reject)
 {
-  const dataFolder = './data/mtgcsv-master/csv/';
+  const dataFolder = '/data/mtgcsv-master/csv/';
+
   let dataFiles = [];
+  let dataFilesAsObject = {};
+  let cards = {};
 
   let promises = [];
 
   files.forEach(file => {
     promises.push(d3.csv("data/mtgcsv-master/csv/" + file)
-                      .then(dataFile => dataFiles.push(dataFile)));
+                      .then(dataFile => {
+                        dataFiles.push(dataFile);
+                        dataFilesAsObject[file.replace(".csv","")] = dataFile;
+
+                        for(card of dataFile){
+                          // console.log(card.name);
+                          if(!cards.hasOwnProperty(card.name)){
+                            cards[card.name] = card;
+                          }
+                          else{
+                            // console.log("Already contained");
+                            cards[card.name].artist += "," + card.artist;
+                          }
+                        }
+
+                        }));
   });
 
   Promise.all(promises).then((res) => {
-    console.log(dataFiles);
+    // console.log(dataFilesAsObject);
+    // console.log(dataFiles);
+    // console.log(cards["Island"]);
     resolve(dataFiles);
   });
 }
