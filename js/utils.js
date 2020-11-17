@@ -6,5 +6,18 @@ function deepCopy(arr) {
     } else {
       copy.push(elem)
     }
-  }) return copy;
+  });
+  return copy;
+}
+
+function deepCopyButMakesCards(arr){
+  let copy = [];
+  arr.forEach(elem => {
+    if (Array.isArray(elem)) {
+      copy.push.apply(copy,deepCopy(elem))
+    } else {
+      copy.push(elem)
+    }
+  });
+  return copy;
 }
