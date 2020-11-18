@@ -12,10 +12,13 @@
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="js/dataLoader.js"></script>
         <script src="js/barchart.js"></script>
+        <script src="js/subtype.js"></script>
+        <script src="js/filter.js"></script>
         <script src="js/update.js"></script>
         <script src="js/utils.js"></script>
         <script src="js/main.js"></script>
         <script src="js/CardLister.js"></script>
+        <link rel="stylesheet" href="styles.css">
         <style>
         </style>
     </head>
@@ -37,6 +40,15 @@
           <input type="checkbox" class=typeRadios value="Artifact" checked onclick="update()"> Artifact<br>
           <input type="checkbox" class=typeRadios value="Land" checked onclick="update()"> Land<br>
         </form>
+        <form>
+          <label for="minCost">Minimum Mana Cost</label>
+          <input type="text" id="minCost" name="minCost" value="0"><br>
+          <label for="maxCost">Maximum Mana Cost</label>
+          <input type="text" id="maxCost" name="maxCost" value="100"><br>
+          <input type="button" value="Update" onclick="update()">
+        </form>
+        <div id="subTypeList" class="vertical-menu">
+        </div>
       </div>
       <svg id="barChart"/>
 
