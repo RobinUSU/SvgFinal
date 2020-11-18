@@ -84,8 +84,7 @@ function updateBarChart(dataSelect = 'colorIdentity', data = barChartData) {
 
   colorAbv.forEach(d => dataAggregate[d] = 0);
 
-  barChartData.forEach(
-      data => {data.forEach(d => { dataAggregate[d[dataSelect]] += 1; })});
+  barChartData.forEach(d => { dataAggregate[d[dataSelect]] += 1; });
 
   let yScale = d3.scaleLinear()
     .range([height,0])

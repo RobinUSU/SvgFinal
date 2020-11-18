@@ -1,6 +1,6 @@
 function update()
 {
-  let data = filterData(dataSet);
+  let data = filterData(cardList);
 
   // ==========================================================================
   // === Update Stuff Here With Filtered Data =================================
@@ -10,9 +10,9 @@ function update()
   // ==========================================================================
 }
 
-function filterData(dataSet)
+function filterData(data)
 {
-  let data = deepCopy(dataSet);
+  let filteredData = deepCopy(data);
   let displayColors = [];
   var radios = document.getElementsByClassName('colorRadios');
 
@@ -22,8 +22,7 @@ function filterData(dataSet)
     }
   }
 
-  data.forEach((d, index) => data[index] =
-                   d.filter(d => displayColors.includes(d['colorIdentity'])));
+  filteredData = filteredData.filter(d => displayColors.includes(d['colorIdentity']));
 
   let displayTypes = [];
   var radios = document.getElementsByClassName('typeRadios');
@@ -34,8 +33,7 @@ function filterData(dataSet)
     }
   }
 
-  data.forEach((d, index) => data[index] =
-                   d.filter(d => displayTypes.includes(d['types'])));
+  filteredData = filteredData.filter(d => displayTypes.includes(d['types']));
 
-  return data;
+  return filteredData;
 }
