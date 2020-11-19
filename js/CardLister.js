@@ -28,6 +28,7 @@ function updateCardChart(data) {
 
   cardChartData = data;
   let cards = deepCopyButMakesCards(data);
+  console.log(cards);
 
   svg.selectAll("*").remove();
   table = svg.append('table');
@@ -36,5 +37,9 @@ function updateCardChart(data) {
     .data(cards).enter()
     .append('tr')
 
-  rows.append('td').html(function(m){return m.name});
+  rows.append('td').html(function(m){return displayableString(getManaCost(m));});
+  rows.append('td').html(function(m){return displayableString(m.name)})
+    .on('click', function(m){console.log(m);});
+  rows.append('td').html(function(m){return displayableString(m.types.split(',')[0])});
+  rows.append('td').html(function(m){return displayableString(m.type)});
 }
