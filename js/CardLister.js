@@ -36,10 +36,10 @@ function updateCardChart(data) {
   let rows = table.selectAll('tr')
     .data(cards).enter()
     .append('tr')
+    .on('click', function(m){console.log(m);});
 
   rows.append('td').html(function(m){return displayableString(getManaCost(m));});
-  rows.append('td').html(function(m){return displayableString(m.name)})
-    .on('click', function(m){console.log(m);});
+  rows.append('td').html(function(m){return displayableString(m.name)});
   rows.append('td').html(function(m){return displayableString(m.types.split(',')[0])});
   rows.append('td').html(function(m){return displayableString(m.type)});
 }
