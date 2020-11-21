@@ -18,10 +18,12 @@
         <script src="js/utils.js"></script>
         <script src="js/main.js"></script>
         <script src="js/CardLister.js"></script>
+		
         <link rel="stylesheet" href="styles.css">
         <style>
         </style>
     </head>
+	
     <body id="body" onload="init()">
       <div>
         <form action="">
@@ -50,9 +52,16 @@
         <div id="subTypeList" class="vertical-menu">
         </div>
       </div>
+	  
+	  
       <svg id="barChart"/>
 
       <div id="cardChart">
+	  
+	  <div id="doughnutChart" class="donutChart"></div>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+  <script src="js/donutChart.js"></script>
+  
       </div>
     </body>
 </html>
