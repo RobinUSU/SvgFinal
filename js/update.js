@@ -10,3 +10,13 @@ function update()
   updateCardChart(data);
   // ==========================================================================
 }
+
+function updateClick()
+{
+  updateOnClick = false;
+
+  if (updateOnClick)
+  {
+    update();
+  }
+}
