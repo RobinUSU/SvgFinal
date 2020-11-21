@@ -18,6 +18,7 @@
         <script src="js/utils.js"></script>
         <script src="js/main.js"></script>
         <script src="js/CardLister.js"></script>
+        <script src="js/CardDetail.js"></script>
         <link rel="stylesheet" href="styles.css">
         <style>
         </style>
@@ -52,7 +53,21 @@
       </div>
       <svg id="barChart"/>
 
-      <div id="cardChart">
+      <div>
+
+        <span id = "cardDetail">
+        </span>
+
+        <span>
+          <div id="cardChartPageButtons">
+            <input type="button" value="Previous Page" onclick=changePage(-1)>
+            <input type="button" value="Next Page" onclick=changePage(1)>
+          </div>
+          <div id="cardChart">
+          </div>
+        </span>
+
       </div>
+
     </body>
 </html>
