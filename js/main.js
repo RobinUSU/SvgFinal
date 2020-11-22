@@ -11,7 +11,24 @@ function init()
     // ========================================================================
     // === Init Stuff Here with Populated 'dataSet' ===========================
     // ========================================================================
-    initBarChartData('colorIdentity', cardList);
+    initBarChartData(
+      cardList,
+      'colorIdentity',
+      'colorRadios',
+      'Number of Cards',
+      'Color Identity',
+      'Number of Cards by Color Identity',
+      'svg#colorBarChart');
+
+    initBarChartData(
+      cardList,
+      'types',
+      'typeRadios',
+      'Number of Cards',
+      'Type Category',
+      'Number of Cards by Type',
+      'svg#typeBarChart');
+
     initCardChartData(dataSet);
     initCardDetailChartData(cardList[0]);
     // ========================================================================

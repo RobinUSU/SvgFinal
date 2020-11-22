@@ -70,39 +70,45 @@
 <h1> Dynamic Bar Chart </h1>
     <body id="body" onload="init()">
 
-
-
-
-      <div>
-        <form action="">
-          <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="update()"> Black<br>
-          <input type="checkbox" class=colorRadios value="U" alt='Blue' checked onclick="update()"> Blue<br>
-          <input type="checkbox" class=colorRadios value="G" alt='Green' checked onclick="update()"> Green<br>
-          <input type="checkbox" class=colorRadios value="R" alt='Red' checked onclick="update()"> Red<br>
-          <input type="checkbox" class=colorRadios value="W" alt='White' checked onclick="update()"> White<br>
-          <input type="checkbox" class=colorRadios value="" alt='Colorless' checked onclick="update()"> Colorless<br>
-        </form>
-        <form action="">
-          <input type="checkbox" class=typeRadios value="Creature" checked onclick="update()"> Creature<br>
-          <input type="checkbox" class=typeRadios value="Enchantment" checked onclick="update()"> Enchantment<br>
-          <input type="checkbox" class=typeRadios value="Instant" checked onclick="update()"> Instant<br>
-          <input type="checkbox" class=typeRadios value="Sorcery" checked onclick="update()"> Sorcery<br>
-          <input type="checkbox" class=typeRadios value="Artifact" checked onclick="update()"> Artifact<br>
-          <input type="checkbox" class=typeRadios value="Land" checked onclick="update()"> Land<br>
-        </form>
-        <form>
-          <label for="minCost">Minimum Mana Cost</label>
-          <input type="text" id="minCost" name="minCost" value="0"><br>
-          <label for="maxCost">Maximum Mana Cost</label>
-          <input type="text" id="maxCost" name="maxCost" value="100"><br>
-          <input type="button" value="Update" onclick="update()">
-        </form>
-        <div id="subTypeList" class="vertical-menu">
+      <div class="allFiltersContainer">
+        <div class="filterContainer">
+          <form class='filter'>
+            <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="clickUpdate()"> Black<br>
+            <input type="checkbox" class=colorRadios value="U" alt='Blue' checked onclick="clickUpdate()"> Blue<br>
+            <input type="checkbox" class=colorRadios value="G" alt='Green' checked onclick="clickUpdate()"> Green<br>
+            <input type="checkbox" class=colorRadios value="R" alt='Red' checked onclick="clickUpdate()"> Red<br>
+            <input type="checkbox" class=colorRadios value="W" alt='White' checked onclick="clickUpdate()"> White<br>
+            <input type="checkbox" class=colorRadios value="" alt='Colorless' checked onclick="clickUpdate()"> Colorless<br>
+          </form>
+        </div>
+        <div class="filterContainer">
+          <form class='filter'>
+            <input type="checkbox" class=typeRadios value="Creature" alt="Creature" checked onclick="clickUpdate()"> Creature<br>
+            <input type="checkbox" class=typeRadios value="Enchantment" alt="Enchantment" checked onclick="clickUpdate()"> Enchantment<br>
+            <input type="checkbox" class=typeRadios value="Instant" alt="Instant" checked onclick="clickUpdate()"> Instant<br>
+            <input type="checkbox" class=typeRadios value="Sorcery" alt="Sorcery" checked onclick="clickUpdate()"> Sorcery<br>
+            <input type="checkbox" class=typeRadios value="Artifact" alt="Artifact" checked onclick="clickUpdate()"> Artifact<br>
+            <input type="checkbox" class=typeRadios value="Land" alt="Land" checked onclick="clickUpdate()"> Land<br>
+          </form>
+        </div>
+        <div class="filterContainer">
+          <form class='filter' >
+            <label for="minCost">Minimum Mana Cost</label>
+            <input type="text" id="minCost" name="minCost" value="0"><br>
+            <label for="maxCost">Maximum Mana Cost</label>
+            <input type="text" id="maxCost" name="maxCost" value="100"><br>
+          </form>
+        </div>
+        <div class="filterContainer">
+          <div id="subTypeList" class="vertical-menu filter">
+          </div>
         </div>
       </div>
+      <input type="button" id='updateButton' value="Update" onclick="update()"><br>
 
+      <svg id="colorBarChart"/><br>
 
-      <svg id="barChart"/>
+      <svg id="typeBarChart"/><br>
 
       <section>
         <span id = "cardDetail">

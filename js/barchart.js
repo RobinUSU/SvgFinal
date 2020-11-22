@@ -56,48 +56,65 @@ function initChart(selectTag, chartClass)
       .style('font-size', '30px')
 }
 
-function initBarChartData(dataSelect = 'colorIdentity', data)
+function initBarChartData(
+    data = barChartData,
+    dataSelect = 'colorIdentity',
+    filterSelect = 'colorRadios',
+    yAxisLabel = 'Number of Cards',
+    xAxisLabel = 'Color Identity',
+    titleLabel = 'Number of Cards by Color Identity',
+    selectTag = 'svg#colorBarChart')
 {
-  initChart('svg#barChart',"barChartObj");
-  updateBarChart(dataSelect,data);
+  initChart(selectTag,"barChartObj");
+  updateBarChart(data, 
+                dataSelect,
+                filterSelect,
+                yAxisLabel,
+                xAxisLabel,
+                titleLabel,
+                selectTag);
 }
 
-function updateBarChart(dataSelect = 'colorIdentity', data = barChartData) {
-  barChartData = data;
-  let yAxisLabel = 'Number of Creatures';
-  let xAxisLabel = 'Color Identity';
-  let titleLabel = 'Number of Creates by Color Identity';
-  let selectTag = 'svg#barChart';
+function updateBarChart(
+    data = barChartData,
+    dataSelect,
+    filterSelect,
+    yAxisLabel,
+    xAxisLabel,
+    titleLabel,
+    selectTag)
+{
   let svg = d3.select(selectTag);
   let barChart = svg.select(".barChartObj");
 
   let dataAggregate = {};
 
-  let colors = [];
-  let colorAbv = [];
-  var radios = document.getElementsByClassName('colorRadios');
+  let filterValues = [];
+  let filerValuesAbv = [];
+  var radios = document.getElementsByClassName(filterSelect);
 
   for (var i = 0, length = radios.length; i < length; i++) {
-    colors.push(radios[i].alt);
-    colorAbv.push(radios[i].value);
+    filterValues.push(radios[i].alt);
+    filerValuesAbv.push(radios[i].value);
   }
 
-  colorAbv.forEach(d => dataAggregate[d] = 0);
+  filerValuesAbv.forEach(d => dataAggregate[d] = 0);
 
-  barChartData.forEach(d => { dataAggregate[d[dataSelect]] += 1; });
+  data.forEach(
+      d => { d[dataSelect].split(",").forEach(d => dataAggregate[d] += 1); });
 
   let yScale = d3.scaleLinear()
     .range([height,0])
-    .domain([5000, 0]);
+    .domain([d3.max(Object.values(dataAggregate)), 0]);
   let yScaleLabel = d3.scaleLinear()
     .range([0, height])
-    .domain([5000, 0]);
+    .domain([d3.max(Object.values(dataAggregate)), 0]);
   let xScaleAxis = d3.scaleBand()
     .range([0, width])
-    .domain(colors);
+    .domain(filterValues);
   let xScale = d3.scaleBand()
     .range([0, width])
-    .domain(colorAbv);
+    .domain(filerValuesAbv);
 
   barChart.select(".xAxis")
     .call(d3.axisBottom(xScaleAxis));
