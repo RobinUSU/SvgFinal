@@ -6,9 +6,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  
     <head>
         <meta charset="utf-8">
-        <title>CS 5820</title>
+        <title>CS 5820 Magic Project</title>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="js/dataLoader.js"></script>
         <script src="js/barchart.js"></script>
@@ -23,7 +24,55 @@
         <style>
         </style>
     </head>
+	
+		  <h2>MTG Formats Popularity with Players (%)</h2>
+  <section>
+    <div class="pieID pie">
+      
+    </div>
+    <ul class="pieID legend">
+      <li>
+        <em>Limited</em>
+        <span>68.8</span>
+      </li>
+      <li>
+        <em>Modern</em>
+        <span>45.7</span>
+      </li>
+      <li>
+        <em>Standard</em>
+        <span>38.5</span>
+      </li>
+      <li>
+        <em>Pauper</em>
+        <span>29.1</span>
+      </li>
+	        <li>
+        <em>Legacy</em>
+        <span>20.0</span>
+      </li>
+      <li>
+        <em>Vintage</em>
+        <span>15.4</span>
+      </li>
+      <li>
+        <em>Momir Basic</em>
+        <span>11.9</span>
+      </li>
+    </ul>
+  </section>
+  
+  <p> <p>
+  
+  		  <div id="doughnutChart" class="donutChart"></div>
+		  
+		 
+<h1> Dynamic Bar Chart </h1>		 
     <body id="body" onload="init()">
+	
+	
+		  
+		  
       <div>
         <form action="">
           <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="update()"> Black<br>
@@ -51,6 +100,8 @@
         <div id="subTypeList" class="vertical-menu">
         </div>
       </div>
+	  
+  
       <svg id="barChart"/>
 
       <div>
@@ -67,7 +118,13 @@
           </div>
         </span>
 
+	  
+      <div id="cardChart">
+	  
       </div>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+  <script src="js/donutChart.js"></script>
+    <script src="js/pieChart.js"></script>
 
     </body>
 </html>
