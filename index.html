@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  
+
     <head>
         <meta charset="utf-8">
         <title>CS 5820 Magic Project</title>
@@ -24,11 +24,11 @@
         <style>
         </style>
     </head>
-	
+
 		  <h2>MTG Formats Popularity with Players (%)</h2>
   <section>
     <div class="pieID pie">
-      
+
     </div>
     <ul class="pieID legend">
       <li>
@@ -61,18 +61,18 @@
       </li>
     </ul>
   </section>
-  
+
   <p> <p>
-  
+
   		  <div id="doughnutChart" class="donutChart"></div>
-		  
-		 
-<h1> Dynamic Bar Chart </h1>		 
+
+
+<h1> Dynamic Bar Chart </h1>
     <body id="body" onload="init()">
-	
-	
-		  
-		  
+
+
+
+
       <div>
         <form action="">
           <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="update()"> Black<br>
@@ -100,12 +100,11 @@
         <div id="subTypeList" class="vertical-menu">
         </div>
       </div>
-	  
-  
+
+
       <svg id="barChart"/>
 
-      <div>
-
+      <section>
         <span id = "cardDetail">
         </span>
 
@@ -117,11 +116,9 @@
           <div id="cardChart">
           </div>
         </span>
+      </section>
 
-	  
-      <div id="cardChart">
-	  
-      </div>
+
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
   <script src="js/donutChart.js"></script>
     <script src="js/pieChart.js"></script>
