@@ -6,7 +6,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  
+
     <head>
         <meta charset="utf-8">
         <title>CS 5820 Magic Project</title>
@@ -24,11 +24,11 @@
         <style>
         </style>
     </head>
-	
+
 		  <h2>MTG Formats Popularity with Players (%)</h2>
   <section>
     <div class="pieID pie">
-      
+
     </div>
     <ul class="pieID legend">
       <li>
@@ -61,14 +61,15 @@
       </li>
     </ul>
   </section>
-  
+
   <p> <p>
-  
+
   		  <div id="doughnutChart" class="donutChart"></div>
-		  
-		 
-<h1> Dynamic Bar Chart </h1>		 
+
+
+<h1> Dynamic Bar Chart </h1>
     <body id="body" onload="init()">
+<<<<<<< HEAD
 	
 	
 		  
@@ -113,9 +114,44 @@
       <svg id="colorBarChart"/><br>
 
       <svg id="typeBarChart"/><br>
+=======
+
+
+
 
       <div>
+        <form action="">
+          <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="update()"> Black<br>
+          <input type="checkbox" class=colorRadios value="U" alt='Blue' checked onclick="update()"> Blue<br>
+          <input type="checkbox" class=colorRadios value="G" alt='Green' checked onclick="update()"> Green<br>
+          <input type="checkbox" class=colorRadios value="R" alt='Red' checked onclick="update()"> Red<br>
+          <input type="checkbox" class=colorRadios value="W" alt='White' checked onclick="update()"> White<br>
+          <input type="checkbox" class=colorRadios value="" alt='Colorless' checked onclick="update()"> Colorless<br>
+        </form>
+        <form action="">
+          <input type="checkbox" class=typeRadios value="Creature" checked onclick="update()"> Creature<br>
+          <input type="checkbox" class=typeRadios value="Enchantment" checked onclick="update()"> Enchantment<br>
+          <input type="checkbox" class=typeRadios value="Instant" checked onclick="update()"> Instant<br>
+          <input type="checkbox" class=typeRadios value="Sorcery" checked onclick="update()"> Sorcery<br>
+          <input type="checkbox" class=typeRadios value="Artifact" checked onclick="update()"> Artifact<br>
+          <input type="checkbox" class=typeRadios value="Land" checked onclick="update()"> Land<br>
+        </form>
+        <form>
+          <label for="minCost">Minimum Mana Cost</label>
+          <input type="text" id="minCost" name="minCost" value="0"><br>
+          <label for="maxCost">Maximum Mana Cost</label>
+          <input type="text" id="maxCost" name="maxCost" value="100"><br>
+          <input type="button" value="Update" onclick="update()">
+        </form>
+        <div id="subTypeList" class="vertical-menu">
+        </div>
+      </div>
+>>>>>>> final_project/master
 
+
+      <svg id="barChart"/>
+
+      <section>
         <span id = "cardDetail">
         </span>
 
@@ -127,11 +163,9 @@
           <div id="cardChart">
           </div>
         </span>
+      </section>
 
-	  
-      <div id="cardChart">
-	  
-      </div>
+
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
   <script src="js/donutChart.js"></script>
     <script src="js/pieChart.js"></script>
