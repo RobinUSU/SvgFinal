@@ -19,7 +19,7 @@
         <script src="js/utils.js"></script>
         <script src="js/main.js"></script>
         <script src="js/CardLister.js"></script>
-		
+        <script src="js/CardDetail.js"></script>
         <link rel="stylesheet" href="styles.css">
         <style>
         </style>
@@ -114,12 +114,27 @@
 
       <svg id="typeBarChart"/><br>
 
+      <div>
+
+        <span id = "cardDetail">
+        </span>
+
+        <span>
+          <div id="cardChartPageButtons">
+            <input type="button" value="Previous Page" onclick=changePage(-1)>
+            <input type="button" value="Next Page" onclick=changePage(1)>
+          </div>
+          <div id="cardChart">
+          </div>
+        </span>
+
 	  
       <div id="cardChart">
 	  
+      </div>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
   <script src="js/donutChart.js"></script>
     <script src="js/pieChart.js"></script>
-      </div>
+
     </body>
 </html>

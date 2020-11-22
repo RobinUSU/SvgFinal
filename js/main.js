@@ -30,6 +30,7 @@ function init()
       'svg#typeBarChart');
 
     initCardChartData(dataSet);
+    initCardDetailChartData(cardList[0]);
     // ========================================================================
   });
 }
