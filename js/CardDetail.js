@@ -30,10 +30,10 @@ function updateCardDetailChart(card){
   }
 
   if(!(card.text === "")){
-      cardDetailSvg .append('p').html(function(){return "Effect: " + card.text});
+      cardDetailSvg .append('p').html(function(){return "Effect: " + presentableText(card.text)});
   }
 
   if(!(card.flavor === "")){
-    cardDetailSvg .append('p').html(function(){return "Flavor Text: " + card.flavor});
+    cardDetailSvg .append('p').html(function(){return "Flavor Text: " + presentableText(card.flavor)});
   }
 }
