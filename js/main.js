@@ -13,6 +13,7 @@ function init()
     // ========================================================================
     initBarChartData('colorIdentity', cardList);
     initCardChartData(dataSet);
+    initCardDetailChartData(cardList[0]);
     // ========================================================================
   });
 }
