@@ -72,3 +72,28 @@ function presentableText(text){
   text = text.replace("\\n", " ");
   return text;
 }
+
+function getSelectedRadios(filterSelect)
+{
+  var radios = document.getElementsByClassName(filterSelect);
+  let filterValuesAbv = [];
+  let filterValues = [];
+
+  for (var i = 0, length = radios.length; i < length; i++) {
+    filterValues.push(radios[i].alt);
+    filterValuesAbv.push(radios[i].value);
+  }
+
+  return {filterValuesAbv, filterValues};
+}
+
+function aggregateDataRadios(data, filterValues, dataSelect)
+{
+  let dataAggregate = {};
+  filterValues.forEach(d => dataAggregate[d] = 0);
+
+  data.forEach(
+      d => { d[dataSelect].split(",").forEach(d => dataAggregate[d] += 1); });
+
+  return dataAggregate;
+}

@@ -12,7 +12,9 @@ function update()
       'Number of Cards',
       'Color Identity',
       'Number of Cards by Color Identity',
-      'svg#colorBarChart');
+      'svg#colorBarChart',
+      getSelectValues = getSelectedRadios,
+      aggregateData = aggregateDataRadios);
 
   updateBarChart(
       data,
@@ -21,7 +23,9 @@ function update()
       'Number of Cards',
       'Type Category',
       'Number of Cards by Type',
-      'svg#typeBarChart');
+      'svg#typeBarChart',
+      getSelectValues = getSelectedRadios,
+      aggregateData = aggregateDataRadios);
 
   updateSubTypeList(data);
   updateCardChart(data);
