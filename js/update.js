@@ -13,8 +13,8 @@ function update()
       'Color Identity',
       'Number of Cards by Color Identity',
       'svg#colorBarChart',
-      getSelectValues = getSelectedRadios,
-      aggregateData = aggregateDataRadios);
+      getSelectedRadios,
+      aggregateDataRadios);
 
   updateBarChart(
       data,
@@ -24,8 +24,19 @@ function update()
       'Type Category',
       'Number of Cards by Type',
       'svg#typeBarChart',
-      getSelectValues = getSelectedRadios,
-      aggregateData = aggregateDataRadios);
+      getSelectedRadios,
+      aggregateDataRadios);
+
+  updateBarChart(
+    data,
+    'cmc',
+    'manaInput',
+    'Number of Cards',
+    'ManaCost',
+    'Number of Cards by Mana Cost',
+    'svg#manaBarChart',
+    getSelectedInputs,
+    aggregateDataInputs);
 
   updateSubTypeList(data);
   updateCardChart(data);

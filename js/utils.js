@@ -1,3 +1,7 @@
+function range(size, startAt = 0) {
+    return [...Array(size).keys()].map(i => i + startAt);
+}
+
 function deepCopy(arr) {
   let copy = [];
   arr.forEach(elem => {
@@ -84,7 +88,7 @@ function getSelectedRadios(filterSelect)
     filterValuesAbv.push(radios[i].value);
   }
 
-  return {filterValuesAbv, filterValues};
+  return [filterValuesAbv, filterValues];
 }
 
 function aggregateDataRadios(data, filterValues, dataSelect)
@@ -94,6 +98,38 @@ function aggregateDataRadios(data, filterValues, dataSelect)
 
   data.forEach(
       d => { d[dataSelect].split(",").forEach(d => dataAggregate[d] += 1); });
+
+  return dataAggregate;
+}
+
+function getSelectedInputs(filterSelect)
+{
+  var inputs = document.getElementsByClassName(filterSelect);
+  let filterValuesAbv = [];
+  let filterValues = [];
+
+  for (var i = 0, length = inputs.length; i < length; i++) {
+    filterValues.push(inputs[i].alt);
+    filterValuesAbv.push(inputs[i].value);
+  }
+
+  let abvRange = range(Number(filterValuesAbv[1]) - Number(filterValuesAbv[0]),
+                       Number(filterValuesAbv[0]));
+  let valueRange = range(Number(filterValues[1]) - Number(filterValues[0]),
+                         Number(filterValues[0]));
+
+  return [abvRange, valueRange];
+}
+
+function aggregateDataInputs(data, filterValues, dataSelect)
+{
+  let dataAggregate = {};
+  filterValues.forEach(d => dataAggregate[d] = 0);
+
+  data.forEach(d => {
+    filterValues.includes(Number(d[dataSelect]))
+        ? dataAggregate[Number(d[dataSelect])] += 1 : 1 + 1;
+  });
 
   return dataAggregate;
 }

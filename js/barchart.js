@@ -68,15 +68,15 @@ function initBarChartData(
     aggregateData = aggregateDataRadios)
 {
   initChart(selectTag,"barChartObj");
-  updateBarChart(data, 
-                dataSelect,
-                filterSelect,
-                yAxisLabel,
-                xAxisLabel,
-                titleLabel,
-                selectTag,
-                getSelectValues,
-                aggregateData);
+  // updateBarChart(data,
+  //               dataSelect,
+  //               filterSelect,
+  //               yAxisLabel,
+  //               xAxisLabel,
+  //               titleLabel,
+  //               selectTag,
+  //               getSelectValues,
+  //               aggregateData);
 }
 
 function updateBarChart(
@@ -93,9 +93,12 @@ function updateBarChart(
   let svg = d3.select(selectTag);
   let barChart = svg.select(".barChartObj");
 
-  let {filterValuesAbv, filterValues} = getSelectValues(filterSelect);
+  let resultArray = getSelectValues(filterSelect);
+  let filterValuesAbv = resultArray[0];
+  let filterValues = resultArray[1];
 
   let dataAggregate = aggregateData(data, filterValuesAbv, dataSelect);
+
 
   let yScale = d3.scaleLinear()
     .range([height,0])
@@ -124,6 +127,7 @@ function updateBarChart(
 
   var u = barChart
     .select(".invertCanvas")
+    .html("")
     .selectAll('.barChartBars')
     .data(Object.entries(dataAggregate));
 
@@ -131,7 +135,7 @@ function updateBarChart(
     .enter()
     .append('rect')
     .attr("class","barChartBars")
-    .attr('x', (d) => xScale(d[0]))
+    .attr('x', (d) => xScale(d[0]) + 10)
     .attr('y', (d) => 0)
     .attr('width', xScale.bandwidth() - 20)
     .attr('height', 0)
@@ -145,7 +149,7 @@ function updateBarChart(
     .transition()
     .duration(1000)
     .delay(100)
-    .attr('x', (d) => xScale(d[0]))
+    .attr('x', (d) => xScale(d[0]) + 10)
     .attr('height', (d) => yScale(d[1]));
 
   u.exit()
