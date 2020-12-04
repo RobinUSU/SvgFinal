@@ -58,9 +58,9 @@ function update()
   // ==========================================================================
 }
 
-function updateClick()
+function clickUpdate()
 {
-  updateOnClick = false;
+  updateOnClick = true;
 
   if (updateOnClick)
   {

@@ -160,7 +160,6 @@ function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
   });
 
   sorted = sorted.slice(0,10);
-  sorted.splice(0,1);
 
   let values = sorted.map(d => d[0]);
 
