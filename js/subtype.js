@@ -18,6 +18,7 @@ function updateSubTypeList(data)
     .data(Array.from(subtypeSet).sort())
     .enter()
     .append('a')
+    .attr('class', 'subtype')
     .on('click', function(d,i) {
       if (this.className == "subtype active")
       {

@@ -59,7 +59,10 @@ function updateCardChart(data) {
     .data(cards).enter()
     .append('tr')
     .attr("class", "tableRow")
-    .on('click', function(m){updateCardDetailChart(m);});
+    .on('click', function(m){updateCardDetailChart(m);})
+    .on('mouseover', function(m) {
+      updateCardDetailChart(m);
+    });
 
   rows.append('td').html(function(m){return displayableString(getManaCost(m));});
   rows.append('td').html(function(m){return displayableString(m.name)});

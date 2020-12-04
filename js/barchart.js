@@ -56,48 +56,69 @@ function initChart(selectTag, chartClass)
       .style('font-size', '30px')
 }
 
-function initBarChartData(dataSelect = 'colorIdentity', data)
+function initBarChartData(
+    data = barChartData,
+    dataSelect = 'colorIdentity',
+    filterSelect = 'colorRadios',
+    yAxisLabel = 'Number of Cards',
+    xAxisLabel = 'Color Identity',
+    titleLabel = 'Number of Cards by Color Identity',
+    selectTag = 'svg#colorBarChart',
+    getSelectValues = getSelectedRadios,
+    aggregateData = aggregateDataRadios,
+    makeDataArray = makeDataArray)
 {
-  initChart('svg#barChart',"barChartObj");
-  updateBarChart(dataSelect,data);
+  initChart(selectTag,"barChartObj");
+  // updateBarChart(data,
+  //               dataSelect,
+  //               filterSelect,
+  //               yAxisLabel,
+  //               xAxisLabel,
+  //               titleLabel,
+  //               selectTag,
+  //               getSelectValues,
+  //               aggregateData);
 }
 
-function updateBarChart(dataSelect = 'colorIdentity', data = barChartData) {
-  barChartData = data;
-  let yAxisLabel = 'Number of Creatures';
-  let xAxisLabel = 'Color Identity';
-  let titleLabel = 'Number of Creates by Color Identity';
-  let selectTag = 'svg#barChart';
+function updateBarChart(
+    data = barChartData,
+    dataSelect,
+    filterSelect,
+    yAxisLabel,
+    xAxisLabel,
+    titleLabel,
+    selectTag,
+    getSelectValues,
+    aggregateData,
+    adjustValues)
+{
   let svg = d3.select(selectTag);
   let barChart = svg.select(".barChartObj");
 
-  let dataAggregate = {};
+  let resultArray = getSelectValues(filterSelect);
+  let filterValues = resultArray[0];
+  let filterValuesAbv = resultArray[1];
 
-  let colors = [];
-  let colorAbv = [];
-  var radios = document.getElementsByClassName('colorRadios');
+  let dataAggregate = aggregateData(data, filterValuesAbv, dataSelect);
 
-  for (var i = 0, length = radios.length; i < length; i++) {
-    colors.push(radios[i].alt);
-    colorAbv.push(radios[i].value);
-  }
-
-  colorAbv.forEach(d => dataAggregate[d] = 0);
-
-  barChartData.forEach(d => { dataAggregate[d[dataSelect]] += 1; });
+  let adjustedValues =
+      adjustValues(filterValues, filterValuesAbv, dataAggregate);
+  filterValues = adjustedValues[0];
+  filterValuesAbv = adjustedValues[1];
+  let dataArray = adjustedValues[2];
 
   let yScale = d3.scaleLinear()
     .range([height,0])
-    .domain([5000, 0]);
+    .domain([d3.max(dataArray.map(d => d[1])), 0]);
   let yScaleLabel = d3.scaleLinear()
     .range([0, height])
-    .domain([5000, 0]);
+    .domain([d3.max(dataArray.map(d => d[1])), 0]);
   let xScaleAxis = d3.scaleBand()
     .range([0, width])
-    .domain(colors);
+    .domain(filterValues);
   let xScale = d3.scaleBand()
     .range([0, width])
-    .domain(colorAbv);
+    .domain(filterValuesAbv);
 
   barChart.select(".xAxis")
     .call(d3.axisBottom(xScaleAxis));
@@ -113,14 +134,15 @@ function updateBarChart(dataSelect = 'colorIdentity', data = barChartData) {
 
   var u = barChart
     .select(".invertCanvas")
+    .html("")
     .selectAll('.barChartBars')
-    .data(Object.entries(dataAggregate));
+    .data(dataArray);
 
   u
     .enter()
     .append('rect')
     .attr("class","barChartBars")
-    .attr('x', (d) => xScale(d[0]))
+    .attr('x', (d) => xScale(d[0]) + 10)
     .attr('y', (d) => 0)
     .attr('width', xScale.bandwidth() - 20)
     .attr('height', 0)
@@ -134,7 +156,7 @@ function updateBarChart(dataSelect = 'colorIdentity', data = barChartData) {
     .transition()
     .duration(1000)
     .delay(100)
-    .attr('x', (d) => xScale(d[0]))
+    .attr('x', (d) => xScale(d[0]) + 10)
     .attr('height', (d) => yScale(d[1]));
 
   u.exit()
@@ -148,6 +170,6 @@ function updateBarChart(dataSelect = 'colorIdentity', data = barChartData) {
     .selectAll('.barChartBars')
     .html("")
     .append('title')
-    .text(d => `${d[1]}`)
+    .text(d => `${d[0]}, ${d[1]}`)
   ;
 }
