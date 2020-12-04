@@ -1,3 +1,22 @@
+function getColor(key)
+{
+  let colorDict = {
+    '': 'LightGray',
+    'B': '#343434',
+    'U': 'Blue',
+    'G': 'Green',
+    'R': 'FireBrick',
+    'W': 'White',
+    'd': 'DarkGray',
+    'dB': 'Black',
+    'dU': 'DarkBlue',
+    'dG': 'DarkGreen',
+    'dR': 'DarkRed',
+    'dW': 'Ivory'
+  };
+
+  return colorDict[key];
+}
 function range(size, startAt = 0) {
     return [...Array(size).keys()].map(i => i + startAt);
 }
