@@ -65,7 +65,8 @@ function initBarChartData(
     titleLabel = 'Number of Cards by Color Identity',
     selectTag = 'svg#colorBarChart',
     getSelectValues = getSelectedRadios,
-    aggregateData = aggregateDataRadios)
+    aggregateData = aggregateDataRadios,
+    makeDataArray = makeDataArray)
 {
   initChart(selectTag,"barChartObj");
   // updateBarChart(data,
@@ -88,24 +89,30 @@ function updateBarChart(
     titleLabel,
     selectTag,
     getSelectValues,
-    aggregateData)
+    aggregateData,
+    adjustValues)
 {
   let svg = d3.select(selectTag);
   let barChart = svg.select(".barChartObj");
 
   let resultArray = getSelectValues(filterSelect);
-  let filterValuesAbv = resultArray[0];
-  let filterValues = resultArray[1];
+  let filterValues = resultArray[0];
+  let filterValuesAbv = resultArray[1];
 
   let dataAggregate = aggregateData(data, filterValuesAbv, dataSelect);
 
+  let adjustedValues =
+      adjustValues(filterValues, filterValuesAbv, dataAggregate);
+  filterValues = adjustedValues[0];
+  filterValuesAbv = adjustedValues[1];
+  let dataArray = adjustedValues[2];
 
   let yScale = d3.scaleLinear()
     .range([height,0])
-    .domain([d3.max(Object.values(dataAggregate)), 0]);
+    .domain([d3.max(dataArray.map(d => d[1])), 0]);
   let yScaleLabel = d3.scaleLinear()
     .range([0, height])
-    .domain([d3.max(Object.values(dataAggregate)), 0]);
+    .domain([d3.max(dataArray.map(d => d[1])), 0]);
   let xScaleAxis = d3.scaleBand()
     .range([0, width])
     .domain(filterValues);
@@ -129,7 +136,7 @@ function updateBarChart(
     .select(".invertCanvas")
     .html("")
     .selectAll('.barChartBars')
-    .data(Object.entries(dataAggregate));
+    .data(dataArray);
 
   u
     .enter()
@@ -163,6 +170,6 @@ function updateBarChart(
     .selectAll('.barChartBars')
     .html("")
     .append('title')
-    .text(d => `${d[1]}`)
+    .text(d => `${d[0]}, ${d[1]}`)
   ;
 }

@@ -88,7 +88,7 @@ function getSelectedRadios(filterSelect)
     filterValuesAbv.push(radios[i].value);
   }
 
-  return [filterValuesAbv, filterValues];
+  return [filterValues, filterValuesAbv];
 }
 
 function aggregateDataRadios(data, filterValues, dataSelect)
@@ -118,7 +118,7 @@ function getSelectedInputs(filterSelect)
   let valueRange = range(Number(filterValues[1]) - Number(filterValues[0]),
                          Number(filterValues[0]));
 
-  return [abvRange, valueRange];
+  return [valueRange, abvRange];
 }
 
 function aggregateDataInputs(data, filterValues, dataSelect)
@@ -132,4 +132,37 @@ function aggregateDataInputs(data, filterValues, dataSelect)
   });
 
   return dataAggregate;
+}
+
+function getSelectedData(filterSelect)
+{
+  var selections = document.getElementsByClassName(filterSelect);
+  let filterValuesAbv = [];
+  let filterValues = [];
+
+  for (var i = 0, length = selections.length; i < length; i++) {
+    filterValues.push(selections[i].__data__);
+    filterValuesAbv.push(selections[i].__data__);
+  }
+
+  return [filterValues, filterValuesAbv];
+}
+
+function adjustValues(filterValues, filterValuesAbv, dataObject)
+{
+  return [filterValues, filterValuesAbv, Object.entries(dataObject)];
+}
+
+function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
+{
+  let sorted = Object.entries(dataObject).sort(function(a, b) {
+    return b[1] - a[1];
+  });
+
+  sorted = sorted.slice(0,10);
+  sorted.splice(0,1);
+
+  let values = sorted.map(d => d[0]);
+
+  return [values, values, sorted];
 }
