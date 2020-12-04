@@ -48,6 +48,8 @@ function filterCost(data)
   let displayCosts = [];
   let minCost = Number(document.getElementById('minCost').value);
   let maxCost = Number(document.getElementById('maxCost').value);
+  document.getElementById('minCost').alt = minCost;
+  document.getElementById('maxCost').alt = maxCost;
   data = data.filter(d => (d.cmc >= minCost && d.cmc <= maxCost));
 
   return data;
