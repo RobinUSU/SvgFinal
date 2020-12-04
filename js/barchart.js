@@ -148,12 +148,12 @@ function updateBarChart(
     .attr('height', 0)
     .style('stroke', 'black')
     .style('stroke-width', 4)
-    .style('fill', d => getColor(d[0]))
+    .style('fill', (d, i) => getColor(d[0], i))
     .on('mouseover', function(d,i) {
-      d3.select(this).style('fill', d => getColor('d' + d[0]))
+      d3.select(this).style('fill', d => getColor('d' + d[0], i))
     })
     .on('mouseout', function(d,i) {
-      d3.select(this).style('fill', d => getColor(d[0]))
+      d3.select(this).style('fill', d => getColor(d[0], i))
     })
     .merge(u)
     .transition()

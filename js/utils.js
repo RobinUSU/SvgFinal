@@ -1,4 +1,4 @@
-function getColor(key)
+function getColor(key, i)
 {
   let colorDict = {
     '': 'LightGray',
@@ -12,10 +12,67 @@ function getColor(key)
     'dU': 'DarkBlue',
     'dG': 'DarkGreen',
     'dR': 'DarkRed',
-    'dW': 'Ivory'
+    'dW': 'Ivory',
+    'Creature': 'DarkGoldenRod',
+    'Enchantment': 'Coral',
+    'Instant': 'BlueViolet',
+    'Sorcery': 'DarkOrange',
+    'Artifact': 'SeaGreen',
+    'Land': 'DarkOliveGreen',
+    'dCreature': 'GoldenRod',
+    'dEnchantment': 'DarkSalmon',
+    'dInstant': 'Violet',
+    'dSorcery': 'Orange',
+    'dArtifact': 'DarkSeaGreen',
+    'dLand': 'OliveGreen',
+    '0': '#3f5efb',
+    '1':'#4e5cef',
+    '2':'#5d5ae4',
+    '3':'#7058d6',
+    '4':'#7d56cc',
+    '5':'#8e54bf',
+    '6':'#9953b6',
+    '7':'#a452ad',
+    '8':'#bd4f9a',
+    '9':'#bf4f99',
+    '10':'#c94e92',
+    '11':'#d14d8c',
+    '12':'#da4b85',
+    '13':'#e34a7e',
+    '14':'#e9497a',
+    '15':'#ed4877',
+    '16':'#ef4876',
+    '17':'#f14874',
+    '18':'#f34873',
+    '19':'#f54871',
+    '20':'#fc466b',
+    'd20':'#3f5efb',
+    'd19':'#4e5cef',
+    'd18':'#5d5ae4',
+    'd17':'#7058d6',
+    'd16':'#7d56cc',
+    'd15':'#8e54bf',
+    'd14':'#9953b6',
+    'd13':'#a452ad',
+    'd12':'#bd4f9a',
+    'd11':'#bf4f99',
+    'd10':'#c94e92',
+    'd9':'#d14d8c',
+    'd8':'#da4b85',
+    'd7':'#e34a7e',
+    'd6':'#e9497a',
+    'd5':'#ed4877',
+    'd4':'#ef4876',
+    'd3':'#f14874',
+    'd2':'#f34873',
+    'd1':'#f54871',
+    'd0':'#fc466b',
   };
 
-  return colorDict[key];
+  if (colorDict[key])
+    return colorDict[key];
+  else
+    return d3.hsl(99, .35 + i * .05, .40 + i * .05, 1);
 }
 function range(size, startAt = 0) {
     return [...Array(size).keys()].map(i => i + startAt);
