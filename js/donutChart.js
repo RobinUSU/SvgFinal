@@ -16,8 +16,8 @@ $(function(){
 ;(function($, undefined) {
   $.fn.drawDoughnutChart = function(data, options) {
     var $this = this,
-      W = 500,
-      H = 500,
+      W = 400,
+      H = 400,
       centerX = W/2,
       centerY = H/2,
       cos = Math.cos,
@@ -39,7 +39,7 @@ $(function(){
         tipOffsetY: -45,
         tipClass: "doughnutTip",
         summaryClass: "doughnutSummary",
-        summaryTitle: "Total Cards:",
+        summaryTitle: "Total MTG Cards:",
         summaryTitleClass: "doughnutSummaryTitle",
         summaryNumberClass: "doughnutSummaryNumber",
         beforeDraw: function() {  },
