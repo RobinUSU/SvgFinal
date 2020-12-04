@@ -237,6 +237,18 @@ function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
 
   sorted = sorted.slice(0,10);
 
+  let targetIdx = null;
+  sorted.forEach((d, i) => {
+    if (d[0] == "") {
+      targetIdx = i;
+    }
+  });
+
+  if (targetIdx != null)
+  {
+    sorted.splice(targetIdx, targetIdx + 1);
+  }
+
   let values = sorted.map(d => d[0]);
 
   return [values, values, sorted];
