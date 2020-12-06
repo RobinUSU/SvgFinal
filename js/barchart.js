@@ -2,8 +2,8 @@ let lineChartData = null;
 let areaChartData = null;
 let scatterPlotData = null;
 let barChartData = null;
-let svgWidth = 1000;
-let svgHeight = 800;
+let svgWidth = 600;
+let svgHeight = 600;
 let margin = 100;
 let width = svgWidth - 2 * margin;
 let height = svgHeight - 2 * margin;
@@ -44,7 +44,7 @@ function initChart(selectTag, chartClass)
   svg.append('text')
       .attr("class", "xAxisLabel")
       .attr('x', width / 2 + margin)
-      .attr('y', height + margin + 40)
+      .attr('y', height + margin + 80)
       .attr('text-anchor', 'middle')
       .style('font-size', '20px')
 
@@ -53,7 +53,7 @@ function initChart(selectTag, chartClass)
       .attr('x', width / 2 + margin)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
-      .style('font-size', '30px')
+      .style('font-size', '20px')
 }
 
 function initBarChartData(
@@ -115,13 +115,21 @@ function updateBarChart(
     .domain([d3.max(dataArray.map(d => d[1])), 0]);
   let xScaleAxis = d3.scaleBand()
     .range([0, width])
-    .domain(filterValues);
+    .domain(filterValues)
+    .padding(.1);
   let xScale = d3.scaleBand()
     .range([0, width])
-    .domain(filterValuesAbv);
+    .domain(filterValuesAbv)
+    .padding(.1);
 
   barChart.select(".xAxis")
-    .call(d3.axisBottom(xScaleAxis));
+    .call(d3.axisBottom(xScaleAxis))
+    .selectAll("text")
+      .attr("y", -5)
+      .attr("x", -10)
+      .attr("transform", "rotate(-90)")
+      .style("text-anchor", "end");
+
   barChart.select(".yAxis")
     .call(d3.axisLeft(yScaleLabel));
 
@@ -138,29 +146,42 @@ function updateBarChart(
     .selectAll('.barChartBars')
     .data(dataArray);
 
-  u
-    .enter()
-    .append('rect')
-    .attr("class","barChartBars")
-    .attr('x', (d) => xScale(d[0]) + 10)
-    .attr('y', (d) => 0)
-    .attr('width', xScale.bandwidth() - 20)
-    .attr('height', 0)
-    .style('stroke', 'black')
-    .style('stroke-width', 4)
-    .style('fill', (d, i) => getColor(d[0], i))
-    .on('mouseover', function(d,i) {
-      d3.select(this).style('fill', d => getColor('d' + d[0], i))
-    })
-    .on('mouseout', function(d,i) {
-      d3.select(this).style('fill', d => getColor(d[0], i))
-    })
-    .merge(u)
-    .transition()
-    .duration(1000)
-    .delay(100)
-    .attr('x', (d) => xScale(d[0]) + 10)
-    .attr('height', (d) => yScale(d[1]));
+  u.enter()
+      .append('rect')
+      .attr("class", "barChartBars")
+      .attr('x', (d) => xScale(d[0]))
+      .attr('y', (d) => 0)
+      .attr('width',
+            function() {
+              if (xScale.bandwidth() <= 0) {
+                return xScale.bandwidth();
+              }
+              else if (xScale.bandwidth() > 100) {
+                return 100;
+              }
+              else
+              {
+                return xScale.bandwidth();
+              }
+            })
+      .attr('height', 0)
+      .style('stroke', 'black')
+      .style('stroke-width', 4)
+      .style('fill', (d, i) => getColor(d[0], i))
+      .on('mouseover',
+          function(d, i) {
+            d3.select(this).style('fill', d => getColor('d' + d[0], i))
+          })
+      .on('mouseout',
+          function(d, i) {
+            d3.select(this).style('fill', d => getColor(d[0], i))
+          })
+      .merge(u)
+      .transition()
+      .duration(1000)
+      .delay(100)
+      .attr('x', (d) => xScale(d[0]))
+      .attr('height', (d) => yScale(d[1]));
 
   u.exit()
     .transition()
@@ -173,6 +194,6 @@ function updateBarChart(
     .selectAll('.barChartBars')
     .html("")
     .append('title')
-    .text(d => `${d[0]}, ${d[1]}`)
+    .text(d => `${d[1]}`)
   ;
 }

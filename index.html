@@ -17,6 +17,7 @@
         <script src="js/filter.js"></script>
         <script src="js/update.js"></script>
         <script src="js/utils.js"></script>
+        <script src="js/cardFetcher.js"></script>
         <script src="js/main.js"></script>
         <script src="js/CardLister.js"></script>
         <script src="js/CardDetail.js"></script>
@@ -96,7 +97,7 @@
             <label for="minCost">Minimum Mana Cost</label>
             <input type="text" class=manaInput id="minCost" name="minCost" alt = "0" value="0"><br>
             <label for="maxCost">Maximum Mana Cost</label>
-            <input type="text" class=manaInput id="maxCost" name="maxCost" alt = "100" value="100"><br>
+            <input type="text" class=manaInput id="maxCost" name="maxCost" alt = "20" value="20"><br>
           </form>
         </div>
         <div class="filterContainer">
@@ -115,6 +116,10 @@
 
       <svg id="subTypeBarChart"/><br>
       </div>
+
+      <div class='cardPreviewContainer'>
+      </div>
+
 
       <section>
         <span id = "cardDetail">
