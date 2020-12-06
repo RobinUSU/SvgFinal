@@ -55,6 +55,7 @@ function update()
 
   updateSubTypeList(data);
   updateCardChart(data);
+  updateImage(data[0]);
   // ==========================================================================
 }
 
