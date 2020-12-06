@@ -59,6 +59,7 @@ function init()
       aggregateDataRadios,
       adjustValuesSorted);
 
+    initManaChart('svg#manaChart', 'brushChart');
 
     initCardChartData(dataSet);
     initCardDetailChartData(cardList[0]);
