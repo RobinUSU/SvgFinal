@@ -18,11 +18,11 @@ function initCardDetailChartData(card){
 function updateCardDetailChart(card){
   console.log(card);
 
-  cardDetailSvg .selectAll("*").remove();
-  cardDetailSvg .append('p').html(function(){return "Name: " + card.name;});
-  cardDetailSvg .append('p').html(function(){return "Type: " + card.type;});
-  cardDetailSvg .append('p').html(function(){return "Mana Cost: " + getManaCost(card);});
-  cardDetailSvg .append('p').html(function(){return  "Converted Mana Cost: " + card.cmc;});
+  cardDetailSvg.selectAll("*").remove();
+  cardDetailSvg.append('p').html(function(){return "Name: " + card.name;});
+  cardDetailSvg.append('p').html(function(){return "Type: " + card.type;});
+  cardDetailSvg.append('p').html(function(){return "Mana Cost: " + getManaCost(card);});
+  cardDetailSvg.append('p').html(function(){return  "Converted Mana Cost: " + card.cmc;});
 
   if(card.types==="Creature"){
     cardDetailSvg .append('p').html(function(){return "Power: " + card.power});
