@@ -7,6 +7,7 @@ let table = null;
 
 let pageIndex = 0;
 let pageSize = 10;
+let curCard = null;
 
 function initCardChart(selectTag, chartClass){
   // ============================================================
@@ -28,7 +29,7 @@ function changePage(num){
   console.log(num);
   pageIndex += num;
 
-  maxNumberofPages = cardChartData.length / pageSize;
+  maxNumberofPages =  (cardChartData.length / pageSize)|0;
   if(pageIndex < 0){
     pageIndex = 0;
   }
@@ -60,10 +61,17 @@ function updateCardChart(data) {
     .data(cards).enter()
     .append('tr')
     .attr("class", "tableRow")
-    .on('click', function(m){updateCardDetailChart(m);})
+    .on('click', function(m){
+      updateCardDetailChart(m);
+      curCard = m;
+    })
     .on('mouseover', function(m) {
       updateCardDetailChart(m);
+    })
+    .on('mouseout',function(m){
+      updateCardDetailChart(curCard);
     });
+
 
   rows.append('td').html(function(m){return displayableString(m.name)});
   rows.append('td').html(function(m){return displayableString(getManaCost(m));});
