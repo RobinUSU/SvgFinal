@@ -153,16 +153,16 @@ function updateBarChart(
       .attr('y', (d) => 0)
       .attr('width',
             function() {
-              if (xScale.bandwidth() <= 0) {
+              // if (xScale.bandwidth() <= 0) {
+              //   return xScale.bandwidth();
+              // }
+              // else if (xScale.bandwidth() > 100) {
+              //   return 100;
+              // }
+              // else
+              // {
                 return xScale.bandwidth();
-              }
-              else if (xScale.bandwidth() > 100) {
-                return 100;
-              }
-              else
-              {
-                return xScale.bandwidth();
-              }
+              // }
             })
       .attr('height', 0)
       .style('stroke', 'black')

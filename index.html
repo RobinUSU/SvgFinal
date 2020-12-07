@@ -18,6 +18,7 @@
         <script src="js/update.js"></script>
         <script src="js/utils.js"></script>
         <script src="js/cardFetcher.js"></script>
+        <script src="js/manaCost.js"></script>
         <script src="js/main.js"></script>
         <script src="js/CardLister.js"></script>
         <script src="js/CardDetail.js"></script>
@@ -92,7 +93,7 @@
             <input type="checkbox" class=typeRadios value="Land" alt="Land" checked onclick="clickUpdate()"> Land <img src="./data/images/land.gif"><br>
           </form>
         </div>
-        <div class="filterContainer">
+        <div class="filterContainer" style="display: none;">
           <form class='filter' >
             <label for="minCost">Minimum Mana Cost</label>
             <input type="text" class=manaInput id="minCost" name="minCost" alt = "0" value="0"><br>
@@ -115,6 +116,10 @@
       <svg id="manaBarChart"/><br>
 
       <svg id="subTypeBarChart"/><br>
+      </div>
+
+      <div class='manaChartContainer'>
+        <svg id="manaChart"/><br>
       </div>
 
       <div class='cardPreviewContainer'>

@@ -189,9 +189,9 @@ function getSelectedInputs(filterSelect)
     filterValuesAbv.push(inputs[i].value);
   }
 
-  let abvRange = range(Number(filterValuesAbv[1]) - Number(filterValuesAbv[0]),
+  let abvRange = range(Number(filterValuesAbv[1]) - Number(filterValuesAbv[0]) + 1,
                        Number(filterValuesAbv[0]));
-  let valueRange = range(Number(filterValues[1]) - Number(filterValues[0]),
+  let valueRange = range(Number(filterValues[1]) - Number(filterValues[0]) + 1,
                          Number(filterValues[0]));
 
   return [valueRange, abvRange];
