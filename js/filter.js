@@ -10,6 +10,8 @@ function filterData(data)
 
   filteredData = filterSubtype(filteredData);
 
+  filteredData = filterText(data);
+
   return filteredData;
 }
 
@@ -67,6 +69,21 @@ function filterSubtype(data)
   {
     data = data.filter(
         d => d.subtypes.split(",").some(d => subtypes.includes(d)));
+  }
+
+  return data;
+}
+
+function filterText(data)
+{
+  let filterText = document.getElementById('filterText').value;
+
+  let filterValues = filterText.split(" ");
+
+  if (filterValues != "")
+  {
+    data = data.filter(datum => filterValues.some(
+                           d => datum.text.search(new RegExp(d)) != -1 ));
   }
 
   return data;
