@@ -74,6 +74,7 @@
 
       <div class="allFiltersContainer">
         <div class="filterContainer">
+          Color<br> Filter<br>
           <form class='filter'>
             <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="clickUpdate()"><img src="./data/images/Black.gif"><br>
             <input type="checkbox" class=colorRadios value="U" alt='Blue' checked onclick="clickUpdate()"><img src="./data/images/Blue.gif"><br>
@@ -84,6 +85,7 @@
           </form>
         </div>
         <div class="filterContainer">
+          Card Type Filter<br>
           <form class='filter'>
             <input type="checkbox" class=typeRadios value="Creature" alt="Creature" checked onclick="clickUpdate()"> Creature <img src="./data/images/creature.gif"><br>
             <input type="checkbox" class=typeRadios value="Enchantment" alt="Enchantment" checked onclick="clickUpdate()"> Enchantment <img src="./data/images/enchantment.gif"><br>
@@ -102,17 +104,22 @@
           </form>
         </div>
         <div class="filterContainer">
+          Card SubType Filter<br>
           <div id="subTypeList" class="vertical-menu filter">
           </div>
         </div>
         <div class="filterContainer">
-            <label for="filerText"></label>
-            <textarea class=filterTextInputer id="filterText" name="filterText" alt = "" value="" rows="11">
-            </textarea><br>
+          Card Text Filter<br>
+          <label for="filerText"></label>
+          <textarea class=filterTextInputer id="filterText" name="filterText" alt = "" value="" rows="11">
+          </textarea><br>
         </div>
 
-        <div class='manaChartContainer'>
-          <svg id="manaChart"/><br>
+        <div class="filterContainer">
+          Card Mana Cost Filter<br>
+          <div class='manaChartContainer'>
+            <svg id="manaChart"/><br>
+          </div>
         </div>
 
       </div>
