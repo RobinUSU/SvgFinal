@@ -10,7 +10,7 @@ function filterData(data)
 
   filteredData = filterSubtype(filteredData);
 
-  filteredData = filterText(data);
+  filteredData = filterText(filteredData);
 
   return filteredData;
 }
