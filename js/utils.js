@@ -253,3 +253,15 @@ function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
 
   return [values, values, sorted];
 }
+
+function removeItemAll(arr, value) {
+  var i = 0;
+  while (i < arr.length) {
+    if (arr[i] === value) {
+      arr.splice(i, 1);
+    } else {
+      ++i;
+    }
+  }
+  return arr;
+}

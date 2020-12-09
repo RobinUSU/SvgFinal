@@ -73,6 +73,7 @@
 
     <body id="body" onload="init()">
 
+<<<<<<< HEAD
       <span id = "topSection">
           <div class="allFiltersContainer">
             <div class="filterContainer">
@@ -111,6 +112,60 @@
             <input type="button" id='updateButton' value="Update" onclick="update()"><br>
 
           </div>
+=======
+      <div class="allFiltersContainer">
+        <div class="filterContainer">
+          Color<br> Filter<br>
+          <form class='filter'>
+            <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="clickUpdate()"><img src="./data/images/Black.gif"><br>
+            <input type="checkbox" class=colorRadios value="U" alt='Blue' checked onclick="clickUpdate()"><img src="./data/images/Blue.gif"><br>
+            <input type="checkbox" class=colorRadios value="G" alt='Green' checked onclick="clickUpdate()"><img src="./data/images/Green.gif"><br>
+            <input type="checkbox" class=colorRadios value="R" alt='Red' checked onclick="clickUpdate()"><img src="./data/images/Red.gif"><br>
+            <input type="checkbox" class=colorRadios value="W" alt='White' checked onclick="clickUpdate()"><img src="./data/images/White.gif"><br>
+            <input type="checkbox" class=colorRadios value="" alt='Colorless' checked onclick="clickUpdate()"><img src="./data/images/Colorless.gif"><br>
+          </form>
+        </div>
+        <div class="filterContainer">
+          Card Type Filter<br>
+          <form class='filter'>
+            <input type="checkbox" class=typeRadios value="Creature" alt="Creature" checked onclick="clickUpdate()"> Creature <img src="./data/images/creature.gif"><br>
+            <input type="checkbox" class=typeRadios value="Enchantment" alt="Enchantment" checked onclick="clickUpdate()"> Enchantment <img src="./data/images/enchantment.gif"><br>
+            <input type="checkbox" class=typeRadios value="Instant" alt="Instant" checked onclick="clickUpdate()"> Instant <img src="./data/images/instant.gif"><br>
+            <input type="checkbox" class=typeRadios value="Sorcery" alt="Sorcery" checked onclick="clickUpdate()"> Sorcery <img src="./data/images/sorcery.gif"><br>
+            <input type="checkbox" class=typeRadios value="Artifact" alt="Artifact" checked onclick="clickUpdate()"> Artifact <img src="./data/images/artifact.gif"><br>
+            <input type="checkbox" class=typeRadios value="Land" alt="Land" checked onclick="clickUpdate()"> Land <img src="./data/images/land.gif"><br>
+          </form>
+        </div>
+        <div class="filterContainer" style="display: none;">
+          <form class='filter' >
+            <label for="minCost">Minimum Mana Cost</label>
+            <input type="text" class=manaInput id="minCost" name="minCost" alt = "0" value="0"><br>
+            <label for="maxCost">Maximum Mana Cost</label>
+            <input type="text" class=manaInput id="maxCost" name="maxCost" alt = "20" value="20"><br>
+          </form>
+        </div>
+        <div class="filterContainer">
+          Card SubType Filter<br>
+          <div id="subTypeList" class="vertical-menu filter">
+          </div>
+        </div>
+        <div class="filterContainer">
+          Card Text Filter<br>
+          <label for="filerText"></label>
+          <textarea class=filterTextInputer id="filterText" name="filterText" alt = "" value="" rows="11">
+          </textarea><br>
+        </div>
+
+        <div class="filterContainer">
+          Card Mana Cost Filter<br>
+          <div class='manaChartContainer'>
+            <svg id="manaChart"/><br>
+          </div>
+        </div>
+
+      </div>
+      <input type="button" id='updateButton' value="Update" onclick="update()"><br>
+>>>>>>> origin/master
 
           <span id="CardArea">
             <span id="cardChartArea">
@@ -128,6 +183,7 @@
               <div class = "cardPreviewContainer">
               </div>
 
+<<<<<<< HEAD
               <div id = "cardDetail">
               </div>
             </span>
@@ -137,6 +193,10 @@
 
       <div class='charts'>
         <svg id="colorBarChart"/><br>
+=======
+      <div class='cardPreviewContainer'>
+      </div>
+>>>>>>> origin/master
 
         <svg id="typeBarChart"/><br>
 

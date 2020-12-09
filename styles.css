@@ -58,13 +58,18 @@
 
 .allFiltersContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
   width: 50%;
   background: lightblue;
 }
 
 .filterContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   border-style: solid;
   border-width: 1px;
   margin: 10px 10px 10px;

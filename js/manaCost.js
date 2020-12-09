@@ -1,6 +1,6 @@
-let svgWidthl = 1000;
-let svgHeightl = 300;
-let marginl = 50;
+let svgWidthl = 800;
+let svgHeightl = 200;
+let marginl = 0;
 let widthl = svgWidthl - 2 * marginl;
 let heightl = svgHeightl - 2 * marginl;
 let manaCosts = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
@@ -15,7 +15,7 @@ function initManaChart(selectTag  = 'svg#manaChart', chartClass = 'brushChart')
 
   let brushChart = svg.append('g')
                       .attr("class", chartClass)
-                      .attr('transform', `translate(${marginl}, ${marginl})`);
+                      .attr('transform', `translate(${marginl}, 25)`);
 
   let rects = brushChart.selectAll('rect').data(manaCosts);
 
