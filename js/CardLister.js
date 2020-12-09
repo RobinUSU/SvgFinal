@@ -7,6 +7,7 @@ let table = null;
 
 let pageIndex = 0;
 let pageSize = 10;
+let curCard = null;
 
 function initCardChart(selectTag, chartClass){
   // ============================================================
@@ -28,7 +29,7 @@ function changePage(num){
   console.log(num);
   pageIndex += num;
 
-  maxNumberofPages = cardChartData.length / pageSize;
+  maxNumberofPages =  (cardChartData.length / pageSize)|0;
   if(pageIndex < 0){
     pageIndex = 0;
   }
@@ -48,23 +49,37 @@ function updateCardChart(data) {
   // console.log(cards);
 
   svg.selectAll("*").remove();
-  table = svg.append('table');
+  table = svg.append('table').attr('class','cardTable');
 
-  header = table.append("tr");
-  header.append('td').html("Total Mana Cost");
-  header.append('td').html("Name");
-  header.append('td').html("Type");
+  header = table.append("tr").attr("class", "tableHeader");
+  header.append('th').html("Name");
+  header.append('th').html("Total Mana Cost");
+  header.append('th').html("Type");
+
 
   let rows = table.selectAll('.tableRow')
     .data(cards).enter()
     .append('tr')
     .attr("class", "tableRow")
-    .on('click', function(m){updateCardDetailChart(m);})
+    .on('click', function(m){
+      updateCardDetailChart(m);
+      curCard = m;
+    })
     .on('mouseover', function(m) {
       updateCardDetailChart(m);
+    })
+    .on('mouseout',function(m){
+      updateCardDetailChart(curCard);
     });
 
-  rows.append('td').html(function(m){return displayableString(getManaCost(m));});
+
   rows.append('td').html(function(m){return displayableString(m.name)});
+  rows.append('td').html(function(m){return displayableString(getManaCost(m));});
   rows.append('td').html(function(m){return displayableString(m.type)});
+
+  headerButtons = table.append("tr").attr("class", "tableHeader");
+  headerButtons.append('th').append("button").html("Previous Page").on("click", function(m){changePage(-1)});
+  headerButtons.append('th').html("Current Page: " + pageIndex);
+  headerButtons.append('th').append("button").html("Next Page").on("click", function(m){changePage(1)});
+
 }

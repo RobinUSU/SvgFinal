@@ -145,11 +145,11 @@ function getManaCost(card){
 
 
 function presentableText(text){
-  text = text.replace("{T}", "Tap");
-  text = text.replace("{X}", "X");
-  text = text.replace("{", "");
-  text = text.replace("}", "")
-  text = text.replace("\\n", " ");
+  text = text.replaceAll("{T}", "Tap");
+  text = text.replaceAll("{X}", "X");
+  text = text.replaceAll("{", " ");
+  text = text.replaceAll("}", " ")
+  text = text.replaceAll("\\n", " ");
   return text;
 }
 

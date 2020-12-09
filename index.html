@@ -26,7 +26,7 @@
         <style>
         </style>
     </head>
-
+<!--
 		  <h2>MTG Formats Popularity with Players (%)</h2>
   <section>
     <div class="pieID pie">
@@ -66,12 +66,14 @@
 
   <p> <p>
 
-  		  <div id="doughnutChart" class="donutChart"></div>
+  <div id="doughnutChart" class="donutChart"></div>
 
+    <br>
+   -->
 
-<h1> Dynamic Bar Chart </h1>
     <body id="body" onload="init()">
 
+      <span id = "topSection">
       <div class="allFiltersContainer">
         <div class="filterContainer">
           Color<br> Filter<br>
@@ -123,39 +125,45 @@
         </div>
 
       </div>
-      <input type="button" id='updateButton' value="Update" onclick="update()"><br>
+
+          <span id="CardArea">
+            <span id="cardChartArea">
+              <!-- <div id="cardChartPageButtons">
+                <input type="button" value="Previous Page" onclick=changePage(-1)>
+                <input type="button" value="Next Page" onclick=changePage(1)>
+              </div> -->
+
+              <div id="cardChart">
+              </div>
+            </span>
+
+
+            <span id = "cardDetailArea">
+              <div class = "cardPreviewContainer">
+              </div>
+
+              <div id = "cardDetail">
+              </div>
+            </span>
+          </span>
+      </span>
+      <br><input type="button" id='updateButton' value="Update" onclick="update()"><br>
+      <br>
 
       <div class='charts'>
-      <svg id="colorBarChart"/><br>
+        <svg id="colorBarChart"/><br>
 
-      <svg id="typeBarChart"/><br>
+        <svg id="typeBarChart"/><br>
 
-      <svg id="manaBarChart"/><br>
+        <svg id="manaBarChart"/><br>
 
-      <svg id="subTypeBarChart"/><br>
-      </div>
-
-      <div class='cardPreviewContainer'>
+        <svg id="subTypeBarChart"/><br>
       </div>
 
 
-      <section>
-        <span id = "cardDetail">
-        </span>
 
-        <span>
-          <div id="cardChartPageButtons">
-            <input type="button" value="Previous Page" onclick=changePage(-1)>
-            <input type="button" value="Next Page" onclick=changePage(1)>
-          </div>
-          <div id="cardChart">
-          </div>
-        </span>
-      </section>
-
-
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-  <script src="js/donutChart.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+    <script src="js/donutChart.js"></script>
     <script src="js/pieChart.js"></script>
 
     </body>

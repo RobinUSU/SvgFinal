@@ -17,23 +17,34 @@ function initCardDetailChartData(card){
 
 function updateCardDetailChart(card){
   console.log(card);
+  updateImage(card);
 
-  cardDetailSvg .selectAll("*").remove();
-  cardDetailSvg .append('p').html(function(){return "Name: " + card.name;});
-  cardDetailSvg .append('p').html(function(){return "Type: " + card.type;});
-  cardDetailSvg .append('p').html(function(){return "Mana Cost: " + getManaCost(card);});
-  cardDetailSvg .append('p').html(function(){return  "Converted Mana Cost: " + card.cmc;});
+  cardDetailSvg.selectAll("*").remove();
+  appendParagraph("Name", card.name);
+
+  appendParagraph("Type", card.type);
+
+  if(getManaCost(card)!=""){
+    appendParagraph("Mana Cost", getManaCost(card));
+    appendParagraph("Converted Mana Cost", card.cmc);
+  }
 
   if(card.types==="Creature"){
-    cardDetailSvg .append('p').html(function(){return "Power: " + card.power});
-    cardDetailSvg .append('p').html(function(){return "Toughness: " + card.toughness});
+    appendParagraph("Power", card.power);
+    appendParagraph("Toughness", card.toughness);
   }
 
   if(!(card.text === "")){
-      cardDetailSvg .append('p').html(function(){return "Effect: " + presentableText(card.text)});
+    appendParagraph("Effect", presentableText(card.text));
   }
 
   if(!(card.flavor === "")){
-    cardDetailSvg .append('p').html(function(){return "Flavor Text: " + presentableText(card.flavor)});
+    appendParagraph("Flavor Text", presentableText(card.flavor));
   }
+  appendParagraph("Printings", card.printings.replaceAll(",", ", "));
+}
+
+function appendParagraph(titleText, content){
+  var paragraph = cardDetailSvg.append('p');
+  paragraph.html(titleText.bold() + ": " + content);
 }
