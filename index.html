@@ -107,8 +107,14 @@
         </div>
         <div class="filterContainer">
             <label for="filerText"></label>
-            <input type="text" class=filterTextInputer id="filterText" name="filterText" alt = "" value=""><br>
+            <textarea class=filterTextInputer id="filterText" name="filterText" alt = "" value="" rows="11">
+            </textarea><br>
         </div>
+
+        <div class='manaChartContainer'>
+          <svg id="manaChart"/><br>
+        </div>
+
       </div>
       <input type="button" id='updateButton' value="Update" onclick="update()"><br>
 
@@ -120,10 +126,6 @@
       <svg id="manaBarChart"/><br>
 
       <svg id="subTypeBarChart"/><br>
-      </div>
-
-      <div class='manaChartContainer'>
-        <svg id="manaChart"/><br>
       </div>
 
       <div class='cardPreviewContainer'>

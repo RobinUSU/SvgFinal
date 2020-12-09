@@ -80,7 +80,9 @@ function filterText(data)
 
   let filterValues = filterText.split(" ");
 
-  if (filterValues != "")
+  filterValues = removeItemAll(filterValues, "");
+
+  if (filterValues.length != 0)
   {
     data = data.filter(datum => filterValues.some(
                            d => datum.text.search(new RegExp(d)) != -1 ));
