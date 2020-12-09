@@ -41,19 +41,19 @@ function update()
     aggregateDataInputs,
     adjustValues);
 
-    updateBarChart(
-      data,
-      'subtypes',
-      'subtype',
-      'Number of Cards',
-      'SubType',
-      'Number of Cards by Subtype',
-      'svg#subTypeBarChart',
-      getSelectedData,
-      aggregateDataRadios,
-      adjustValuesSorted);
-
   updateSubTypeList(data);
+  updateBarChart(
+    data,
+    'subtypes',
+    'subtype',
+    'Number of Cards',
+    'SubType',
+    'Number of Cards by Subtype',
+    'svg#subTypeBarChart',
+    getSelectedData,
+    aggregateDataRadios,
+    adjustValuesSorted);
+
   updateCardChart(data);
   updateImage(data[0]);
   // ==========================================================================
