@@ -1,3 +1,6 @@
+/* Main updating function, data will be filtered here and updates that need to
+ * be made when the page updates should be placed inside this function.
+ * */
 function update()
 {
   let data = [];
@@ -72,6 +75,7 @@ function update()
   // ==========================================================================
 }
 
+/* Function to change updating behavior on filtering clicks */
 function clickUpdate()
 {
   updateOnClick = true;

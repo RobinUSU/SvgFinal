@@ -1,3 +1,8 @@
+/* Filters given data
+ *
+ * @param[in] data -- data to be filtered
+ * @returns -- filtered data
+ * */
 function filterData(data)
 {
   let filteredData = deepCopy(data);
@@ -15,6 +20,11 @@ function filterData(data)
   return filteredData;
 }
 
+/* Filters data based on color filters 
+ *
+ * param[in] data -- data to filter
+ * @returns -- filtered data
+ * */
 function filterColor(data)
 {
   let displayColors = [];
@@ -30,6 +40,11 @@ function filterColor(data)
   return data
 }
 
+/* Filters data based on card type filters 
+ *
+ * param[in] data -- data to filter
+ * @returns -- filtered data
+ * */
 function filterType(data)
 {
   let displayTypes = [];
@@ -45,6 +60,11 @@ function filterType(data)
   return data;
 }
 
+/* Filters data based on card mana cost filters 
+ *
+ * param[in] data -- data to filter
+ * @returns -- filtered data
+ * */
 function filterCost(data)
 {
   let displayCosts = [];
@@ -57,6 +77,11 @@ function filterCost(data)
   return data;
 }
 
+/* Filters data based on card sub type filters
+ *
+ * param[in] data -- data to filter
+ * @returns -- filtered data
+ * */
 function filterSubtype(data)
 {
   let subtypeElems = document.getElementsByClassName("subtype active")
@@ -74,6 +99,11 @@ function filterSubtype(data)
   return data;
 }
 
+/* Filters data based on text filters
+ *
+ * param[in] data -- data to filter
+ * @returns -- filtered data
+ * */
 function filterText(data)
 {
   let filterText = document.getElementById('filterText').value;

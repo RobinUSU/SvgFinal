@@ -1,9 +1,17 @@
+/* Update function for subtype lists 
+ *
+ * @param[in] data -- data to update lists with
+ * */
 function updateSubTypeList(data)
 {
   updateSubTypeListActive(data);
   updateSubTypeListShared(data);
 }
 
+/* Update function to update active subtype list 
+ *
+ * @param[in] data -- data to update list with
+ * */
 function updateSubTypeListActive(data)
 {
   let typeList = d3.select("#subTypeListActive");
@@ -37,6 +45,10 @@ function updateSubTypeListActive(data)
       });
 }
 
+/* Update function to remove items from being an active subtype
+ *
+ * @param[in] item -- item to be removed from being active
+ * */
 function removefromActive(item = null)
 {
   let subtypeElems = document.getElementsByClassName("subtype active");
@@ -55,6 +67,10 @@ function removefromActive(item = null)
   }
 }
 
+/* Update function to update shared subtype list
+ *
+ * @param[in] data -- data to update list with
+ * */
 function updateSubTypeListShared(data)
 {
   let typeList = d3.select("#subTypeListShared");
@@ -92,6 +108,10 @@ function updateSubTypeListShared(data)
   ;
 }
 
+/* Initialization function for subtype list containing all subtypes
+ *
+ * @param[in] data -- data to initialize list with
+ * */
 function initSubTypeListAll(data = cardList)
 {
   let typeList = d3.select("#subTypeListAll");
