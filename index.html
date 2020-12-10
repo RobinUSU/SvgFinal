@@ -110,6 +110,7 @@
           <label for="filerText"></label>
           <textarea class=filterTextInputer id="filterText" name="filterText" alt = "" value="" placeholder="deathtouch">
           </textarea><br>
+          <input type="button" id='updateButton' value="Update" onclick="update()">
         </div>
         <div class="subTypeFilterContainer">
           <div class="filterContainer">
@@ -135,16 +136,15 @@
           </div>
         </div>
 
-        <div class = "buttonArea">
-          <input type="button" id='updateButton' value="Update" onclick="update()">
-          <input type="button" id='resetButton' value="Reset" onclick="window.location.reload(false)">
-        </div>
-
         <div class="filterContainer">
           Card Mana Cost Filter<br>
           <div class='manaChartContainer'>
             <svg id="manaChart"/><br>
           </div>
+        </div>
+
+        <div class = "buttonArea">
+          <input type="button" id='resetButton' value="Reset" onclick="window.location.reload(false)">
         </div>
 
       </div>
