@@ -48,7 +48,7 @@ function initChart(selectTag, chartClass)
 
   svg.append('text')
       .attr("class", "titleLabel")
-      .attr('x', width / 2 + margin)
+      .attr('x', 2 * margin)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
       .style('font-size', '20px')

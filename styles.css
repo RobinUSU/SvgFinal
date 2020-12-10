@@ -19,10 +19,9 @@ body {
   display: flex;
   flex-direction: row;
   width: 50%;
-
   margin-left: 15px;
-  border: 1px solid black;
-  background: black;
+  border: 1px solid antiquewhite;
+  background: #1a1a1a;
 }
 #cardDetailArea{
   width: 50%;
@@ -56,7 +55,7 @@ body {
 }
 #cardChart th, td{
   test-align: left;
-  border: 1px solid black;
+  border: 1px solid antiquewhite;
   width: 33%;
   height: 8.3%;
 }
@@ -71,6 +70,11 @@ body {
   flex-direction: row;
 }
 
+.barchart {
+  border: 1px solid antiquewhite;
+  background-color: #1a1a1a;
+}
+
 .allFiltersContainer {
   display: flex;
   align-items: stretch;
@@ -78,8 +82,8 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
   width: 50%;
-  border: 1px solid black;
-  background: black;
+  border: 1px solid antiquewhite;
+  background: #1a1a1a;
 }
 
 .subTypeFilterContainer {
@@ -89,7 +93,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-  background: black;
+  background: #1a1a1a;
 }
 
 .filterContainer {
