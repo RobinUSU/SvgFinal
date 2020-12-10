@@ -111,7 +111,6 @@
           <textarea class=filterTextInputer id="filterText" name="filterText" alt = "" value="" placeholder="deathtouch">
           </textarea><br>
         </div>
-
         <div class="subTypeFilterContainer">
           <div class="filterContainer">
             Card SubType Filter<br>
@@ -134,6 +133,11 @@
               </div>
             </form>
           </div>
+        </div>
+
+        <div class = "buttonArea">
+          <input type="button" id='updateButton' value="Update" onclick="update()">
+          <input type="button" id='resetButton' value="Reset" onclick="window.location.reload(false)">
         </div>
 
         <div class="filterContainer">
@@ -166,7 +170,7 @@
             </span>
           </span>
       </span>
-      <br><input type="button" id='updateButton' value="Update" onclick="update()"><br>
+      <br><br>
       <br>
 
       <div class='charts'>
