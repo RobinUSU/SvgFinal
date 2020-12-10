@@ -142,7 +142,6 @@ function updateBarChart(
 
   var u = barChart
     .select(".invertCanvas")
-    .html("")
     .selectAll('.barChartBars')
     .data(dataArray);
 
@@ -164,7 +163,6 @@ function updateBarChart(
                 return xScale.bandwidth();
               // }
             })
-      .attr('height', 0)
       .style('stroke', 'black')
       .style('stroke-width', 4)
       .style('fill', (d, i) => getColor(d[0], i))
@@ -182,12 +180,6 @@ function updateBarChart(
       .delay(100)
       .attr('x', (d) => xScale(d[0]))
       .attr('height', (d) => yScale(d[1]));
-
-  u.exit()
-    .transition()
-    .duration(1000)
-    .delay(100)
-    .attr('height', yScale(0));
 
   barChart
     .select(".invertCanvas")
