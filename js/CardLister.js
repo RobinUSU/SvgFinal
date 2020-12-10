@@ -62,6 +62,7 @@ function updateCardChart(data) {
     .append('tr')
     .attr("class", "tableRow")
     .on('click', function(m){
+      addCardToDeck(m);
       updateCardDetailChart(m);
       curCard = m;
     })

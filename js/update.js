@@ -1,6 +1,14 @@
 function update()
 {
-  let data = filterData(cardList);
+  let data = [];
+  if (deckView)
+  {
+    data = filterData(deck);
+  }
+  else  {
+    data = filterData(cardList);
+  }
+
   // ==========================================================================
   // === Update Stuff Here With Filtered Data =================================
   // ==========================================================================
