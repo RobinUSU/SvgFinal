@@ -41,6 +41,7 @@ function update()
     adjustValues);
 
   updateSubTypeList(data);
+
   updateBarChart(
     data,
     'subtypes',
@@ -54,6 +55,7 @@ function update()
     adjustValuesSorted);
 
   updateCardChart(data);
+
   updateImage(data[0]);
   // ==========================================================================
 }
