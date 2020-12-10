@@ -85,7 +85,7 @@ function filterText(data)
   if (filterValues.length != 0)
   {
     data = data.filter(datum => filterValues.some(
-                           d => datum.text.search(new RegExp(d)) != -1 ));
+                           d => ((datum.text.search(new RegExp(d)) != -1) || (datum.name.search(new RegExp(d)) != -1) || (datum.flavor.search(new RegExp(d)) != -1)) ));
   }
 
   return data;
