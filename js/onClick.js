@@ -1,3 +1,8 @@
+/* Function for on click behavior in barcharts that use radio filters 
+ *
+ * @param[in] targetRadio -- bar chart bar value that was clicked
+ * @param[in] filterSelect -- select tag for filtering elements
+ * */
 function onClickRadio(targetRadio, filterSelect)
 {
   console.log(targetRadio);
@@ -11,6 +16,11 @@ function onClickRadio(targetRadio, filterSelect)
   }
 }
 
+/* Function for on click behavior for subtype barchart
+ *
+ * @param[in] targetSubtype -- bar chart bar value that was clicked
+ * @param[in] filterSelect -- select tag for filtering elements
+ * */
 function onClickSubtype(targetSubtype, filterSelect)
 {
   let subtypes = document.getElementsByClassName(filterSelect);
@@ -25,6 +35,11 @@ function onClickSubtype(targetSubtype, filterSelect)
   update();
 }
 
+/* Function for on click behavior for mana chart
+ *
+ * @param[in] targetMana -- bar chart mana value that was clicked
+ * @param[in] filterSelect -- select tag for filtering elements
+ * */
 function onClickMana(targetMana, filterSelect)
 {
   var inputs = document.getElementsByClassName(filterSelect);
@@ -34,10 +49,4 @@ function onClickMana(targetMana, filterSelect)
   inputs[1].alt = targetMana;
 
   snapBrushTo(Number(targetMana), Number(targetMana));
-}
-
-function onClick(obj, filterSelect)
-{
-  console.log(obj);
-  console.log(filterSelect);
 }

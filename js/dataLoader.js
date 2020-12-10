@@ -41,6 +41,12 @@ const files = [
 
 ];
 
+/* Async loads data files
+ *
+ * @param[in] resolve -- async resolve function, data files are passed in to
+ *  resolve
+ * @param[in] reject -- async reject function
+ * */
 async function loadDataset(resolve, reject)
 {
   const dataFolder = '/data/mtgcsv-master/csv/';
