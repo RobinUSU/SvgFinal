@@ -43,6 +43,7 @@ function updateCardChart(data) {
   // used this to help set this up  https://www.vis4.net/blog/2015/04/making-html-tables-in-d3-doesnt-need-to-be-a-pain/
   if(data!=cardChartData){
     cardChartData = data;
+    curCard = data[0];
     pageIndex = 0;
   }
   let cards = deepCopyButMakesCards(cardChartData).slice(pageIndex*pageSize,(pageIndex+1)*pageSize);

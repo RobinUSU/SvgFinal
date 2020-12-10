@@ -112,6 +112,7 @@ function getManaCost(card){
   let colors = [ "Colorless","Black", "Blue", "Green", "Red", "White","Yellow"];
   let amountOfEach = [0,0,0,0,0,0,0];
 
+  let colorlessCount = ""
   for(entry of card.manaCost){
 
     if(isNaN(entry)){
@@ -130,9 +131,10 @@ function getManaCost(card){
 
     }
     else{
-      amountOfEach[0] += Number(entry);
+      colorlessCount += entry;
     }
   }
+  amountOfEach[0] = Number(colorlessCount);
 
   for(color in colors){
     if(amountOfEach[color] > 0){
