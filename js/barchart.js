@@ -1,7 +1,3 @@
-let lineChartData = null;
-let areaChartData = null;
-let scatterPlotData = null;
-let barChartData = null;
 let svgWidth = 500;
 let svgHeight = 600;
 let margin = 100;
@@ -11,14 +7,14 @@ let height = svgHeight - 2 * margin;
 function initChart(selectTag, chartClass)
 {
   // ============================================================
-  // Svg and lineChart object creation
+  // Svg and barChart object creation
   // ============================================================
   let svg =
       d3.select(selectTag).attr('width', svgWidth).attr('height', svgHeight);
-  let lineChart = svg.append('g')
+  let barChart = svg.append('g')
                       .attr("class", chartClass)
                       .attr('transform', `translate(${margin}, ${margin})`);
-  lineChart
+  barChart
     .append('g')
     .attr("class", "invertCanvas")
     .attr('transform', `translate(0, ${height})scale(1,-1)`)
@@ -26,12 +22,12 @@ function initChart(selectTag, chartClass)
   // ============================================================
   // Axis and axis label creation
   // ============================================================
-  lineChart.append('g')
+  barChart.append('g')
       .attr("class", "xAxis")
       .attr('transform', `translate(0, ${height})`)
       .style('font-size', '12px');
 
-  lineChart.append('g').attr("class", "yAxis").style('font-size', '10px')
+  barChart.append('g').attr("class", "yAxis").style('font-size', '10px')
 
   svg.append('text')
       .attr("class", "yAxisLabel")
@@ -40,6 +36,7 @@ function initChart(selectTag, chartClass)
       .attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle')
       .style('font-size', '20px')
+      .style('fill', 'antiquewhite')
 
   svg.append('text')
       .attr("class", "xAxisLabel")
@@ -47,41 +44,23 @@ function initChart(selectTag, chartClass)
       .attr('y', height + margin + 80)
       .attr('text-anchor', 'middle')
       .style('font-size', '20px')
+      .style('fill', 'antiquewhite')
 
   svg.append('text')
       .attr("class", "titleLabel")
-      .attr('x', width / 2 + margin)
+      .attr('x', 2 * margin)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
       .style('font-size', '20px')
+      .style('fill', 'antiquewhite')
 }
 
-function initBarChartData(
-    data = barChartData,
-    dataSelect = 'colorIdentity',
-    filterSelect = 'colorRadios',
-    yAxisLabel = 'Number of Cards',
-    xAxisLabel = 'Color Identity',
-    titleLabel = 'Number of Cards by Color Identity',
-    selectTag = 'svg#colorBarChart',
-    getSelectValues = getSelectedRadios,
-    aggregateData = aggregateDataRadios,
-    makeDataArray = makeDataArray)
-{
+function initBarChartData(selectTag = 'svg#colorBarChart') {
   initChart(selectTag,"barChartObj");
-  // updateBarChart(data,
-  //               dataSelect,
-  //               filterSelect,
-  //               yAxisLabel,
-  //               xAxisLabel,
-  //               titleLabel,
-  //               selectTag,
-  //               getSelectValues,
-  //               aggregateData);
 }
 
 function updateBarChart(
-    data = barChartData,
+    data,
     dataSelect,
     filterSelect,
     yAxisLabel,
@@ -90,7 +69,8 @@ function updateBarChart(
     selectTag,
     getSelectValues,
     aggregateData,
-    adjustValues)
+    adjustValues,
+    onClickFuct = onClick)
 {
   let svg = d3.select(selectTag);
   let barChart = svg.select(".barChartObj");
@@ -142,7 +122,6 @@ function updateBarChart(
 
   var u = barChart
     .select(".invertCanvas")
-    .html("")
     .selectAll('.barChartBars')
     .data(dataArray);
 
@@ -151,20 +130,7 @@ function updateBarChart(
       .attr("class", "barChartBars")
       .attr('x', (d) => xScale(d[0]))
       .attr('y', (d) => 0)
-      .attr('width',
-            function() {
-              // if (xScale.bandwidth() <= 0) {
-              //   return xScale.bandwidth();
-              // }
-              // else if (xScale.bandwidth() > 100) {
-              //   return 100;
-              // }
-              // else
-              // {
-                return xScale.bandwidth();
-              // }
-            })
-      .attr('height', 0)
+      .attr('width', xScale.bandwidth())
       .style('stroke', 'black')
       .style('stroke-width', 4)
       .style('fill', (d, i) => getColor(d[0], i))
@@ -176,18 +142,17 @@ function updateBarChart(
           function(d, i) {
             d3.select(this).style('fill', d => getColor(d[0], i))
           })
+      .on('click',
+          d => {
+            onClickFuct(d[0], filterSelect);
+            update();
+          })
       .merge(u)
       .transition()
       .duration(1000)
       .delay(100)
       .attr('x', (d) => xScale(d[0]))
       .attr('height', (d) => yScale(d[1]));
-
-  u.exit()
-    .transition()
-    .duration(1000)
-    .delay(100)
-    .attr('height', yScale(0));
 
   barChart
     .select(".invertCanvas")

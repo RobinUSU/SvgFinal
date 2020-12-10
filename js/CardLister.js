@@ -1,4 +1,3 @@
-
 let cardChartData = null;
 let ownClass = null;
 let ownTag = null;
