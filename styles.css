@@ -1,6 +1,8 @@
 body {
   background-color: #333333;
   color: antiquewhite;
+
+    font-size: 1.2em;
 }
 
 #pageTitle {
@@ -39,6 +41,19 @@ body {
   width: 50%;
   margin: 10px;
 }
+
+#sortSelector{
+  height: 50px;
+  width: 75%;
+}
+#sortButton{
+  width: 25%;
+  height: 50px;
+  font-size: 18px;
+  background-color: #595959;
+  color: antiquewhite;
+}
+
 #cardChart table{
   border-collapse: collapse;
   width:100%;
@@ -64,6 +79,34 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+
+#fluffArea{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 1px solid antiquewhite;
+  background: #1a1a1a;
+}
+#pageDescription{
+  width: 50%;
+
+  border-style: solid;
+  border-width: 1px;
+  margin: 10px 10px 10px;
+  background-color: #333333;
+}
+#pagevideo{
+  width: 50%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+  border-style: solid;
+  border-width: 1px;
+  margin: 10px 10px 10px;
+  background-color: #333333;
 }
 
 .charts {
