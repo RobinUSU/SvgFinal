@@ -267,3 +267,28 @@ function removeItemAll(arr, value) {
   }
   return arr;
 }
+
+function reset()
+{
+  let radios = document.querySelectorAll('input[type=checkbox]');
+  for (let radio of radios)
+  {
+    radio.checked = true;
+  }
+
+  let textfilter = document.getElementById('filterText');
+  textfilter.value = "";
+
+  removefromActive();
+
+  let minManaCost = document.getElementById('minCost');
+  minManaCost.alt = 0;
+  minManaCost.value = 0;
+  let maxManaCost = document.getElementById('maxCost');
+  maxManaCost.alt = 20;
+  maxManaCost.value = 20;
+
+  d3.select('.brush').html("");
+
+  update();
+}

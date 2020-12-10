@@ -37,13 +37,13 @@ function updateSubTypeListActive(data)
       });
 }
 
-function removefromActive(item)
+function removefromActive(item = null)
 {
   let subtypeElems = document.getElementsByClassName("subtype active");
   let targets = [];
   for (let subtypeElem of subtypeElems) {
     console.log("1");
-    if (subtypeElem.text == item.text)
+    if (item == null || subtypeElem.text == item.text)
     {
       targets.push(subtypeElem)
     }
