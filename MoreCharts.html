@@ -1,0 +1,186 @@
+<!-- CS-5890 Homework 2       -->
+<!-- Andres Imperial          -->
+<!-- andres.imperial@live.com -->
+<!-- A02294771                -->
+
+<!-- Robin Adair          -->
+<!-- robin.adair@aggiemail.edu.usu -->
+<!-- A02051283                -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>CS 5820 Magic Project</title>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="js/dataLoader.js"></script>
+        <script src="js/barchart.js"></script>
+        <script src="js/subtype.js"></script>
+        <script src="js/filter.js"></script>
+        <script src="js/update.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/cardFetcher.js"></script>
+        <script src="js/manaCost.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/CardLister.js"></script>
+        <script src="js/CardDetail.js"></script>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+        </style>
+    </head>
+
+<nav>
+
+<h1> Master of Magic: Visualizing Magic the Gathering </h1> 
+    <ol>
+        <b> Magic the Gathering Page: Links to other Pages:</b> | <a href="/index.html">index.html</a>
+    </ol>
+</nav>
+
+
+
+		  <h2>MTG Formats Popularity with Players (%)</h2>
+  <section>
+    <div class="pieID pie">
+
+    </div>
+    <ul class="pieID legend">
+      <li>
+        <em>Limited</em>
+        <span>68.8</span>
+      </li>
+      <li>
+        <em>Modern</em>
+        <span>45.7</span>
+      </li>
+      <li>
+        <em>Standard</em>
+        <span>38.5</span>
+      </li>
+      <li>
+        <em>Pauper</em>
+        <span>29.1</span>
+      </li>
+	        <li>
+        <em>Legacy</em>
+        <span>20.0</span>
+      </li>
+      <li>
+        <em>Vintage</em>
+        <span>15.4</span>
+      </li>
+      <li>
+        <em>Momir Basic</em>
+        <span>11.9</span>
+      </li>
+    </ul>
+  </section>
+
+  <p> <p>
+
+  <div id="doughnutChart" class="donutChart"></div>
+
+    <br>
+
+    <body id="body" onload="init()">
+
+      <span id = "topSection">
+      <div class="allFiltersContainer">
+        <div class="filterContainer">
+          Color<br> Filter<br>
+          <form class='filter'>
+            <input type="checkbox" class=colorRadios value="B" alt='Black' checked onclick="clickUpdate()"><img src="./data/images/Black.gif"><br>
+            <input type="checkbox" class=colorRadios value="U" alt='Blue' checked onclick="clickUpdate()"><img src="./data/images/Blue.gif"><br>
+            <input type="checkbox" class=colorRadios value="G" alt='Green' checked onclick="clickUpdate()"><img src="./data/images/Green.gif"><br>
+            <input type="checkbox" class=colorRadios value="R" alt='Red' checked onclick="clickUpdate()"><img src="./data/images/Red.gif"><br>
+            <input type="checkbox" class=colorRadios value="W" alt='White' checked onclick="clickUpdate()"><img src="./data/images/White.gif"><br>
+            <input type="checkbox" class=colorRadios value="" alt='Colorless' checked onclick="clickUpdate()"><img src="./data/images/Colorless.gif"><br>
+          </form>
+        </div>
+        <div class="filterContainer">
+          Card Type Filter<br>
+          <form class='filter'>
+            <input type="checkbox" class=typeRadios value="Creature" alt="Creature" checked onclick="clickUpdate()"> Creature <img src="./data/images/creature.gif"><br>
+            <input type="checkbox" class=typeRadios value="Enchantment" alt="Enchantment" checked onclick="clickUpdate()"> Enchantment <img src="./data/images/enchantment.gif"><br>
+            <input type="checkbox" class=typeRadios value="Instant" alt="Instant" checked onclick="clickUpdate()"> Instant <img src="./data/images/instant.gif"><br>
+            <input type="checkbox" class=typeRadios value="Sorcery" alt="Sorcery" checked onclick="clickUpdate()"> Sorcery <img src="./data/images/sorcery.gif"><br>
+            <input type="checkbox" class=typeRadios value="Artifact" alt="Artifact" checked onclick="clickUpdate()"> Artifact <img src="./data/images/artifact.gif"><br>
+            <input type="checkbox" class=typeRadios value="Land" alt="Land" checked onclick="clickUpdate()"> Land <img src="./data/images/land.gif"><br>
+          </form>
+        </div>
+        <div class="filterContainer" style="display: none;">
+          <form class='filter' >
+            <label for="minCost">Minimum Mana Cost</label>
+            <input type="text" class=manaInput id="minCost" name="minCost" alt = "0" value="0"><br>
+            <label for="maxCost">Maximum Mana Cost</label>
+            <input type="text" class=manaInput id="maxCost" name="maxCost" alt = "20" value="20"><br>
+          </form>
+        </div>
+        <div class="filterContainer">
+          Card SubType Filter<br>
+          <div id="subTypeList" class="vertical-menu filter">
+          </div>
+        </div>
+        <div class="filterContainer">
+          Card Text Filter<br>
+          <label for="filerText"></label>
+          <textarea class=filterTextInputer id="filterText" name="filterText" alt = "" value="" rows="11">
+          </textarea><br>
+        </div>
+        <div class = "buttonArea">
+          <input type="button" id='updateButton' value="Update" onclick="update()">
+          <input type="button" id='resetButton' value="Reset" onclick="window.location.reload(false)"">
+        </div>
+        <div class="filterContainer">
+          Card Mana Cost Filter<br>
+          <div class='manaChartContainer'>
+            <svg id="manaChart"/><br>
+          </div>
+        </div>
+
+      </div>
+
+          <span id="CardArea">
+            <span id="cardChartArea">
+              <!-- <div id="cardChartPageButtons">
+                <input type="button" value="Previous Page" onclick=changePage(-1)>
+                <input type="button" value="Next Page" onclick=changePage(1)>
+              </div> -->
+
+              <div id="cardChart">
+              </div>
+            </span>
+
+
+            <span id = "cardDetailArea">
+              <div class = "cardPreviewContainer">
+              </div>
+
+              <div id = "cardDetail">
+              </div>
+            </span>
+          </span>
+      </span>
+      <br><br>
+      <br>
+
+      <div class='charts'>
+        <svg id="colorBarChart"/><br>
+
+        <svg id="typeBarChart"/><br>
+
+        <svg id="manaBarChart"/><br>
+
+        <svg id="subTypeBarChart"/><br>
+      </div>
+
+
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+    <script src="js/donutChart.js"></script>
+    <script src="js/pieChart.js"></script>
+
+    </body>
+</html>
