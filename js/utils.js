@@ -283,14 +283,14 @@ function reset()
 
   removefromActive();
 
+  d3.select(".brush").call(brush.move, null);
+
   let minManaCost = document.getElementById('minCost');
   minManaCost.alt = 0;
   minManaCost.value = 0;
   let maxManaCost = document.getElementById('maxCost');
   maxManaCost.alt = 20;
   maxManaCost.value = 20;
-
-  d3.select('.brush').html("");
 
   update();
 }
