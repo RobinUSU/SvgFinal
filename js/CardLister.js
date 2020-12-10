@@ -25,10 +25,11 @@ function initCardChart(selectTag, chartClass){
   sortSelector.append("option").attr("value","-alpha").html("Reverse Alphabetical Order");
   sortSelector.append("option").attr("value","manaCost").html("Mana Cost High to Low");
   sortSelector.append("option").attr("value","-manaCost").html("Mana Cost Low to High");
-  sortButtonArea.append("button").html("Sort").on("click", function(m){
+  button = sortButtonArea.append("button").html("Sort").on("click", function(m){
       sort = true;
       updateCardChart(cardChartData);
       });
+  button.attr("id", "sortButton");
 }
 
 function initCardChartData(data){
