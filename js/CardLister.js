@@ -1,4 +1,3 @@
-
 let cardChartData = null;
 let ownClass = null;
 let ownTag = null;
@@ -33,8 +32,8 @@ function changePage(num){
   if(pageIndex < 0){
     pageIndex = 0;
   }
-  else if (pageIndex > maxNumberofPages) {
-    pageIndex = maxNumberofPages
+  else if (pageIndex > maxNumberofPages-1) {
+    pageIndex = maxNumberofPages-1
   }
   updateCardChart(cardChartData);
 }
@@ -80,7 +79,7 @@ function updateCardChart(data) {
 
   headerButtons = table.append("tr").attr("class", "tableHeader");
   headerButtons.append('th').append("button").html("Previous Page").on("click", function(m){changePage(-1)});
-  headerButtons.append('th').html("Current Page: " + pageIndex);
+  headerButtons.append('th').html("Current Page: " + pageIndex).append;
   headerButtons.append('th').append("button").html("Next Page").on("click", function(m){changePage(1)});
 
 }

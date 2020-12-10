@@ -2,7 +2,7 @@ function getColor(key, i)
 {
   let colorDict = {
     '': 'LightGray',
-    'B': '#343434',
+    'B': '#595959',
     'U': 'Blue',
     'G': 'Green',
     'R': 'FireBrick',
@@ -71,6 +71,8 @@ function getColor(key, i)
 
   if (colorDict[key])
     return colorDict[key];
+  else if (key[0] == "d")
+    return d3.hsl(99, .35 + (10 - i) * .05, .40 + (10 - i) * .05, 1);
   else
     return d3.hsl(99, .35 + i * .05, .40 + i * .05, 1);
 }
@@ -237,8 +239,6 @@ function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
     return b[1] - a[1];
   });
 
-  sorted = sorted.slice(0,10);
-
   let targetIdx = null;
   sorted.forEach((d, i) => {
     if (d[0] == "") {
@@ -248,8 +248,10 @@ function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
 
   if (targetIdx != null)
   {
-    sorted.splice(targetIdx, targetIdx + 1);
+    sorted.splice(targetIdx, 1);
   }
+
+  sorted = sorted.slice(0,10);
 
   let values = sorted.map(d => d[0]);
 
@@ -266,4 +268,29 @@ function removeItemAll(arr, value) {
     }
   }
   return arr;
+}
+
+function reset()
+{
+  let radios = document.querySelectorAll('input[type=checkbox]');
+  for (let radio of radios)
+  {
+    radio.checked = true;
+  }
+
+  let textfilter = document.getElementById('filterText');
+  textfilter.value = "";
+
+  removefromActive();
+
+  d3.select(".brush").call(brush.move, null);
+
+  let minManaCost = document.getElementById('minCost');
+  minManaCost.alt = 0;
+  minManaCost.value = 0;
+  let maxManaCost = document.getElementById('maxCost');
+  maxManaCost.alt = 20;
+  maxManaCost.value = 20;
+
+  update();
 }

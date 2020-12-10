@@ -14,7 +14,8 @@ function update()
       'svg#colorBarChart',
       getSelectedRadios,
       aggregateDataRadios,
-      adjustValues);
+      adjustValues,
+      onClickRadio);
 
   updateBarChart(
       data,
@@ -26,7 +27,8 @@ function update()
       'svg#typeBarChart',
       getSelectedRadios,
       aggregateDataRadios,
-      adjustValues);
+      adjustValues,
+      onClickRadio);
 
   updateBarChart(
     data,
@@ -36,11 +38,13 @@ function update()
     'ManaCost',
     'Number of Cards by Mana Cost',
     'svg#manaBarChart',
-    getSelectedInputs,
+    () => {return [manaCosts, manaCosts];},
     aggregateDataInputs,
-    adjustValues);
+    adjustValues,
+    onClickMana);
 
   updateSubTypeList(data);
+
   updateBarChart(
     data,
     'subtypes',
@@ -51,9 +55,11 @@ function update()
     'svg#subTypeBarChart',
     getSelectedData,
     aggregateDataRadios,
-    adjustValuesSorted);
+    adjustValuesSorted,
+    onClickSubtype);
 
   updateCardChart(data);
+
   updateImage(data[0]);
   // ==========================================================================
 }

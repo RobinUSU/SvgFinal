@@ -4,7 +4,15 @@ let marginl = 0;
 let widthl = svgWidthl - 2 * marginl;
 let heightl = svgHeightl - 2 * marginl;
 let manaCosts = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
+let brush = null;
 
+function snapBrushTo(lowerBound, upperBound)
+{
+  let f = widthl / manaCosts.length;
+  d3.select(".brush").transition().call(
+      brush.move,
+      [ (lowerBound * f), ((upperBound + 1) * f) - 1 ]);
+}
 
 function initManaChart(selectTag  = 'svg#manaChart', chartClass = 'brushChart')
 {
@@ -52,11 +60,13 @@ function initManaChart(selectTag  = 'svg#manaChart', chartClass = 'brushChart')
     .style('fill', 'white')
   ;
 
-  let brush =
+  brush =
     d3.brushX()
     .extent(
         [ [ 0, 0 ], [ widthl, rectHeight + 20 ] ])
     .on("end", () => {
+      if (!d3.event.sourceEvent) return;
+
       let x0 = d3.event.selection[0];
       let x1 = d3.event.selection[1];
       let lowerBound = Math.floor(x0/f);
@@ -67,6 +77,8 @@ function initManaChart(selectTag  = 'svg#manaChart', chartClass = 'brushChart')
       inputs[0].alt = lowerBound;
       inputs[1].value = upperBound;
       inputs[1].alt = upperBound;
+
+      snapBrushTo(lowerBound, upperBound);
 
       update();
     });
