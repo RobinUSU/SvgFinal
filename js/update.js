@@ -37,7 +37,7 @@ function update()
     'ManaCost',
     'Number of Cards by Mana Cost',
     'svg#manaBarChart',
-    getSelectedInputs,
+    () => {return [manaCosts, manaCosts];},
     aggregateDataInputs,
     adjustValues);
 
