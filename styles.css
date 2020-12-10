@@ -11,8 +11,9 @@ body {
 
 .buttonArea{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  flex-grow: 1;
 }
 
 #CardArea{
@@ -135,6 +136,20 @@ button {
   background-color: #595959;
   color: antiquewhite;
 }
+
+#deckButton{
+  width: 100px;
+  height: 50px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  background-color: #595959;
+  color: antiquewhite;
+}
+
+#deckButton.active{
+  background-color: #3CB371;
+}
+
 
 #resetButton{
   width: 100px;
