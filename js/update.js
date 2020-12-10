@@ -14,7 +14,8 @@ function update()
       'svg#colorBarChart',
       getSelectedRadios,
       aggregateDataRadios,
-      adjustValues);
+      adjustValues,
+      onClickRadio);
 
   updateBarChart(
       data,
@@ -26,7 +27,8 @@ function update()
       'svg#typeBarChart',
       getSelectedRadios,
       aggregateDataRadios,
-      adjustValues);
+      adjustValues,
+      onClickRadio);
 
   updateBarChart(
     data,
@@ -38,7 +40,8 @@ function update()
     'svg#manaBarChart',
     () => {return [manaCosts, manaCosts];},
     aggregateDataInputs,
-    adjustValues);
+    adjustValues,
+    onClickMana);
 
   updateSubTypeList(data);
 
@@ -52,7 +55,8 @@ function update()
     'svg#subTypeBarChart',
     getSelectedData,
     aggregateDataRadios,
-    adjustValuesSorted);
+    adjustValuesSorted,
+    onClickSubtype);
 
   updateCardChart(data);
 

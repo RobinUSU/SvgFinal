@@ -69,7 +69,8 @@ function updateBarChart(
     selectTag,
     getSelectValues,
     aggregateData,
-    adjustValues)
+    adjustValues,
+    onClickFuct = onClick)
 {
   let svg = d3.select(selectTag);
   let barChart = svg.select(".barChartObj");
@@ -140,6 +141,11 @@ function updateBarChart(
       .on('mouseout',
           function(d, i) {
             d3.select(this).style('fill', d => getColor(d[0], i))
+          })
+      .on('click',
+          d => {
+            onClickFuct(d[0], filterSelect);
+            update();
           })
       .merge(u)
       .transition()
