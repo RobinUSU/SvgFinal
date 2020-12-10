@@ -36,6 +36,7 @@ function initChart(selectTag, chartClass)
       .attr('transform', 'rotate(-90)')
       .attr('text-anchor', 'middle')
       .style('font-size', '20px')
+      .style('fill', 'antiquewhite')
 
   svg.append('text')
       .attr("class", "xAxisLabel")
@@ -43,6 +44,7 @@ function initChart(selectTag, chartClass)
       .attr('y', height + margin + 80)
       .attr('text-anchor', 'middle')
       .style('font-size', '20px')
+      .style('fill', 'antiquewhite')
 
   svg.append('text')
       .attr("class", "titleLabel")
@@ -50,6 +52,7 @@ function initChart(selectTag, chartClass)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
       .style('font-size', '20px')
+      .style('fill', 'antiquewhite')
 }
 
 function initBarChartData(selectTag = 'svg#colorBarChart') {

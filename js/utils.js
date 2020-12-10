@@ -2,7 +2,7 @@ function getColor(key, i)
 {
   let colorDict = {
     '': 'LightGray',
-    'B': '#343434',
+    'B': '#595959',
     'U': 'Blue',
     'G': 'Green',
     'R': 'FireBrick',

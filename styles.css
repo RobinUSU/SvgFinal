@@ -1,3 +1,14 @@
+body {
+  background-color: #333333;
+  color: antiquewhite;
+}
+
+#pageTitle {
+  display:flex;
+  justify-content:center;
+  color: antiquewhite;
+}
+
 .buttonArea{
   display: flex;
   justify-content: center;
@@ -11,7 +22,7 @@
 
   margin-left: 15px;
   border: 1px solid black;
-  background: lightblue;
+  background: black;
 }
 #cardDetailArea{
   width: 50%;
@@ -34,14 +45,14 @@
   height: 677.33px;
 }
 .tableHeader{
-  background-color: #2f2f2f;
+  background-color: #333333;
   color: White;
 }
 .tableRow:hover{
   background-color: Grey;
 }
 .tableRow{
-    background-color: white;
+    background-color: #595959;
 }
 #cardChart th, td{
   test-align: left;
@@ -68,7 +79,7 @@
   flex-wrap: wrap;
   width: 50%;
   border: 1px solid black;
-  background: lightblue;
+  background: black;
 }
 
 .subTypeFilterContainer {
@@ -78,7 +89,7 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-  background: lightblue;
+  background: black;
 }
 
 .filterContainer {
@@ -89,23 +100,38 @@
   border-style: solid;
   border-width: 1px;
   margin: 10px 10px 10px;
-  background: white;
+  background-color: #333333;
 }
 
 .filter {
   margin: 5px 10px 5px;
+  background-color: #333333;
 }
 
 #filterText {
   display: flex;
   flex-grow: 1;
   width: 90%;
+  background-color: #595959;
+  color: antiquewhite;
+  font-size: 16px;
+}
+
+button {
+  width: 100px;
+  height: 50px;
+  background-color: #595959;
+  color: antiquewhite;
 }
 
 #updateButton{
   width: 100px;
   height: 50px;
+  font-size: 18px;
+  background-color: #595959;
+  color: antiquewhite;
 }
+
 #resetButton{
   width: 100px;
   height: 50px;
@@ -123,15 +149,14 @@
 }
 
 .vertical-menu a {
-  background-color: #eee; /* Grey background color */
-  color: black; /* Black text color */
   display: block; /* Make the links appear below each other */
   padding: 12px; /* Add some padding */
   text-decoration: none; /* Remove underline from links */
+  background-color : #595959;
 }
 
 .vertical-menu a:hover {
-  background-color: #ccc; /* Dark grey background on mouse-over */
+  background-color: black; /* Dark grey background on mouse-over */
 }
 
 .vertical-menu a.active {
