@@ -71,6 +71,8 @@ function getColor(key, i)
 
   if (colorDict[key])
     return colorDict[key];
+  else if (key[0] == "d")
+    return d3.hsl(99, .35 + (10 - i) * .05, .40 + (10 - i) * .05, 1);
   else
     return d3.hsl(99, .35 + i * .05, .40 + i * .05, 1);
 }
