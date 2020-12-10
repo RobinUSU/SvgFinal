@@ -106,15 +106,34 @@
           </form>
         </div>
         <div class="filterContainer">
-          Card SubType Filter<br>
-          <div id="subTypeList" class="vertical-menu filter">
-          </div>
-        </div>
-        <div class="filterContainer">
           Card Text Filter<br>
           <label for="filerText"></label>
           <textarea class=filterTextInputer id="filterText" name="filterText" alt = "" value="" rows="11">
           </textarea><br>
+        </div>
+
+        <div class="subTypeFilterContainer">
+          <div class="filterContainer">
+            Card SubType Filter<br>
+            <form class='filter'>
+              <div id="subTypeListAll" class="vertical-menu filter">
+              </div>
+            </form>
+          </div>
+          <div class="filterContainer">
+            Selected SubType<br>
+            <form class='filter'>
+              <div id="subTypeListActive" class="vertical-menu filter">
+              </div>
+            </form>
+          </div>
+          <div class="filterContainer">
+            Shared SubTypes<br>
+            <form class='filter'>
+              <div id="subTypeListShared" class="vertical-menu filter">
+              </div>
+            </form>
+          </div>
         </div>
 
         <div class="filterContainer">

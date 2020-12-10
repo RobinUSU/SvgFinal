@@ -66,6 +66,15 @@
   background: lightblue;
 }
 
+.subTypeFilterContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: lightblue;
+}
+
 .filterContainer {
   display: flex;
   align-items: center;

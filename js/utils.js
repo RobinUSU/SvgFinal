@@ -235,8 +235,6 @@ function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
     return b[1] - a[1];
   });
 
-  sorted = sorted.slice(0,10);
-
   let targetIdx = null;
   sorted.forEach((d, i) => {
     if (d[0] == "") {
@@ -246,8 +244,10 @@ function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
 
   if (targetIdx != null)
   {
-    sorted.splice(targetIdx, targetIdx + 1);
+    sorted.splice(targetIdx, 1);
   }
+
+  sorted = sorted.slice(0,10);
 
   let values = sorted.map(d => d[0]);
 
