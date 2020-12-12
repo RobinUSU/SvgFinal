@@ -91,11 +91,21 @@ function updateCardChart(data) {
   table = svg.append('table').attr('class','cardTable');
 
   // adds the table header
-  header = table.append("tr").attr("class", "tableHeader");
+  header = table.append("tr").attr("class", function(m){
+    if(!deckView){
+      return "tableHeader";
+    }
+    return "tableHeaderDeck"
+  });
   header.append('th').html("Name");
   header.append('th').html("Total Mana Cost");
   header.append('th').html("Type");
-  header.append('th');
+  header.append('th').html(function(m){
+    if(deckView){
+      return "Deck View";
+    }
+    return "All Card View";
+  });
 
   // adds the table contents
   let rows = table.selectAll('.tableRow,.tableRowInDeck')
