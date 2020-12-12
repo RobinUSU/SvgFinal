@@ -136,6 +136,7 @@ function updateCardChart(data) {
   rows.append('td').html(function(m){return displayableString(getManaCost(m));});
   rows.append('td').html(function(m){return displayableString(m.type)});
 
+  // adds deckView specific buttons
   if(!deckView){
     rows.append('th').append("button").html("Add to Deck").on("click", function(m){
           addCardToDeck(m);
