@@ -69,6 +69,13 @@ body {
 .tableRow{
     background-color: #595959;
 }
+.tableRowInDeck{
+  background-color: darkred;
+}
+.tableRowInDeck:hover{
+  background-color: red;
+}
+
 #cardChart th, td{
   test-align: left;
   border: 1px solid antiquewhite;

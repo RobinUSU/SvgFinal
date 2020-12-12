@@ -94,14 +94,20 @@ function updateCardChart(data) {
   header.append('th').html("Name");
   header.append('th').html("Total Mana Cost");
   header.append('th').html("Type");
+  header.append('th');
 
   // adds the table contents
-  let rows = table.selectAll('.tableRow')
+  let rows = table.selectAll('.tableRow,.tableRowInDeck')
     .data(cards).enter()
     .append('tr')
-    .attr("class", "tableRow")
+    .attr("class", function(m){
+      if(deck.includes(m)){
+        return "tableRowInDeck";
+      }
+
+      return "tableRow";
+    })
     .on('click', function(m){
-      addCardToDeck(m);
       updateCardDetailChart(m);
       curCard = m;
     })
@@ -116,12 +122,16 @@ function updateCardChart(data) {
   rows.append('td').html(function(m){return displayableString(m.name)});
   rows.append('td').html(function(m){return displayableString(getManaCost(m));});
   rows.append('td').html(function(m){return displayableString(m.type)});
+  rows.append('th').append("button").html("Add to Deck").on("click", function(m){
+        addCardToDeck(m);
+        updateCardChart(data);});
 
 
   // adds the table footer buttons and page index display
   headerButtons = table.append("tr").attr("class", "tableHeader");
   headerButtons.append('th').append("button").html("Previous Page").on("click", function(m){changePage(-1)});
-  headerButtons.append('th').html("Current Page: " + pageIndex).append;
+  headerButtons.append('th').html("Current Page: " + pageIndex);
+  headerButtons.append('th').html("Total Pages: " +(((cardChartData.length / pageSize)|0)-1));
   headerButtons.append('th').append("button").html("Next Page").on("click", function(m){changePage(1)});
 
 
