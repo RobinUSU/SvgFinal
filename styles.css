@@ -59,14 +59,32 @@ body {
   width:100%;
   height: 677.33px;
 }
+
 .tableHeader{
   background-color: #333333;
   color: White;
+  height: 30px;
 }
 .tableHeaderDeck{
   background-color: darkred;
   color: White;
 }
+
+.tableLabel{
+  background-color: #333333;
+  color: White;
+  font-size: 1.8em;
+  width: 100%;
+  text-align: center;
+}
+.tableLabelDeck{
+  background-color: darkred;
+  color: White;
+  font-size: 1.8em;
+  width: 100%;
+  text-align: center;
+}
+
 .tableRow:hover{
   background-color: Grey;
 }

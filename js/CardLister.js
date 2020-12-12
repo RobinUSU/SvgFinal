@@ -85,27 +85,29 @@ function updateCardChart(data) {
   // console.log(cards);
 
   // removes the table
-  svg.selectAll("table").remove();
+  svg.selectAll("table,.tableLabel,.tableLabelDeck").remove();
 
   // appends the table
+  svg.append("div").attr("class", function(m){
+    if(!deckView){
+      return "tableLabel";
+    }
+    return "tableLabelDeck"
+  }).html(function(m){
+      if(deckView){
+        return "Deck View";
+      }
+      return "All Card View";
+    });
   table = svg.append('table').attr('class','cardTable');
 
   // adds the table header
-  header = table.append("tr").attr("class", function(m){
-    if(!deckView){
-      return "tableHeader";
-    }
-    return "tableHeaderDeck"
-  });
+  header = table.append("tr").attr("class", "tableHeader");
   header.append('th').html("Name");
   header.append('th').html("Total Mana Cost");
   header.append('th').html("Type");
-  header.append('th').html(function(m){
-    if(deckView){
-      return "Deck View";
-    }
-    return "All Card View";
-  });
+  header.append('th')
+
 
   // adds the table contents
   let rows = table.selectAll('.tableRow,.tableRowInDeck')
@@ -133,9 +135,17 @@ function updateCardChart(data) {
   rows.append('td').html(function(m){return displayableString(m.name)});
   rows.append('td').html(function(m){return displayableString(getManaCost(m));});
   rows.append('td').html(function(m){return displayableString(m.type)});
-  rows.append('th').append("button").html("Add to Deck").on("click", function(m){
-        addCardToDeck(m);
-        updateCardChart(data);});
+
+  if(!deckView){
+    rows.append('th').append("button").html("Add to Deck").on("click", function(m){
+          addCardToDeck(m);
+          updateCardChart(data);});
+  }
+  else{
+    rows.append('th').append("button").html("Remove from Deck").on("click", function(m){
+          removeCardFromDeck(m);
+          updateCardChart(deck);});
+  }
 
 
   // adds the table footer buttons and page index display
