@@ -106,7 +106,7 @@ function deepCopyButMakesCards(arr){
 }
 
 function displayableString(string){
-  return (string.length < 30) ? string:(string.substring(0,17)+"...") ;
+  return (string.length < 15) ? string:(string.substring(0,12)+"...") ;
 }
 
 function getManaCost(card){
