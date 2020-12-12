@@ -299,5 +299,7 @@ function reset()
   maxManaCost.alt = 20;
   maxManaCost.value = 20;
 
+
+
   update();
 }

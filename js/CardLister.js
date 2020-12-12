@@ -23,6 +23,7 @@ function initCardChart(selectTag, chartClass){
   sortButtonArea = svg.append('div');
   sortSelector = sortButtonArea.append('select');
   sortSelector.attr("id", "sortSelector");
+  sortSelector.append("option").attr("value","none").html("None");
   sortSelector.append("option").attr("value","alpha").html("Alphabetical Order");
   sortSelector.append("option").attr("value","-alpha").html("Reverse Alphabetical Order");
   sortSelector.append("option").attr("value","manaCost").html("Mana Cost High to Low");
@@ -65,7 +66,7 @@ function updateCardChart(data) {
   if(data!=cardChartData){
     // console.log(data);
     cardChartData = data;
-    curCard = data[0];
+    curCard = sortCustom(data)[0];
     pageIndex = 0;
   }
 
@@ -133,8 +134,6 @@ function updateCardChart(data) {
   headerButtons.append('th').html("Current Page: " + pageIndex);
   headerButtons.append('th').html("Total Pages: " +(((cardChartData.length / pageSize)|0)-1));
   headerButtons.append('th').append("button").html("Next Page").on("click", function(m){changePage(1)});
-
-
 }
 
 // sorts the cards passed in
