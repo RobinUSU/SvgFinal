@@ -138,12 +138,12 @@ function updateCardChart(data) {
 
   // adds deckView specific buttons
   if(!deckView){
-    rows.append('th').append("button").html("Add to Deck").on("click", function(m){
+    rows.append('th').append("button").attr("class","deckButtonChange").html("Add to Deck").on("click", function(m){
           addCardToDeck(m);
           updateCardChart(data);});
   }
   else{
-    rows.append('th').append("button").html("Remove from Deck").on("click", function(m){
+    rows.append('th').append("button").attr("class","deckButtonChange").html("Remove from Deck").on("click", function(m){
           removeCardFromDeck(m);
           updateCardChart(deck);});
   }
@@ -151,7 +151,7 @@ function updateCardChart(data) {
 
   // adds the table footer buttons and page index display
   headerButtons = table.append("tr").attr("class", "tableHeader");
-  headerButtons.append('th').append("button").html("Previous Page").on("click", function(m){changePage(-1)});
+  headerButtons.append('th').append("button").html("Prev. Page").on("click", function(m){changePage(-1)});
   headerButtons.append('th').html("Current Page: " + pageIndex);
   headerButtons.append('th').html("Total Pages: " +(((cardChartData.length / pageSize)|0)-1));
   headerButtons.append('th').append("button").html("Next Page").on("click", function(m){changePage(1)});
