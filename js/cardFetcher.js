@@ -1,3 +1,7 @@
+/* Fetches art for given card and updates card art preview in the DOM 
+ *
+ * @param[in] card -- card to query art for
+ * */
 function updateImage(card)
 {
   let uId = card.multiverseid;

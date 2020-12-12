@@ -76,6 +76,7 @@ function getColor(key, i)
   else
     return d3.hsl(99, .35 + i * .05, .40 + i * .05, 1);
 }
+
 function range(size, startAt = 0) {
     return [...Array(size).keys()].map(i => i + startAt);
 }
@@ -258,6 +259,11 @@ function adjustValuesSorted(filterValues, filterValuesAbv, dataObject)
   return [values, values, sorted];
 }
 
+/* Function removes value from array
+ *
+ * @param[in] arr -- array to be checked for value
+ * @param[in] value -- value to be removed
+ * */
 function removeItemAll(arr, value) {
   var i = 0;
   while (i < arr.length) {
@@ -270,6 +276,7 @@ function removeItemAll(arr, value) {
   return arr;
 }
 
+/* Function reset filtering options for the page and updates page */
 function reset()
 {
   let radios = document.querySelectorAll('input[type=checkbox]');

@@ -6,6 +6,11 @@ let heightl = svgHeightl - 2 * marginl;
 let manaCosts = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
 let brush = null;
 
+/* Snaps brush filter to given bounds 
+ *
+ * @param[in] lowerBound -- lower bound for brush to snap to
+ * @param[in] upperBound -- upper bound for brush to snap to
+ * */
 function snapBrushTo(lowerBound, upperBound)
 {
   let f = widthl / manaCosts.length;
@@ -14,6 +19,11 @@ function snapBrushTo(lowerBound, upperBound)
       [ (lowerBound * f), ((upperBound + 1) * f) - 1 ]);
 }
 
+/* Initializes mana chart 
+ *
+ * param[in] selectTag -- tag to select svg object
+ * param[in] chartClass -- class tag to give to generated chart
+ * */
 function initManaChart(selectTag  = 'svg#manaChart', chartClass = 'brushChart')
 {
   let svg =

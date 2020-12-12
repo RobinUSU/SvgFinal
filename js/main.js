@@ -1,6 +1,7 @@
 let dataSet = null;
 let cardList = null;
 
+// Initializes page and then performs a page update
 function init()
 {
   new Promise(loadDataset).then(data => {

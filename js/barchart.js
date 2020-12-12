@@ -4,6 +4,11 @@ let margin = 100;
 let width = svgWidth - 2 * margin;
 let height = svgHeight - 2 * margin;
 
+/* Initializes a chart
+ *
+ * @param[in] selectTag -- tag for selecting target svg object
+ * @param[in] chartClass -- class tag to give to generated chart
+ * */
 function initChart(selectTag, chartClass)
 {
   // ============================================================
@@ -55,10 +60,29 @@ function initChart(selectTag, chartClass)
       .style('fill', 'antiquewhite')
 }
 
+/* Initializes a bar chart
+ *
+ * @param[in] selectTag -- tag for selecting target svg object
+ * */
 function initBarChartData(selectTag = 'svg#colorBarChart') {
   initChart(selectTag,"barChartObj");
 }
 
+/* Updates bar chart
+ *
+ * @param[in] data -- data to update bar chart with
+ * @param[in] dataSelect -- select tag for data attribute
+ * @param[in] filterSelect -- select tag for filtering controls
+ * @param[in] yAxisLabel -- label for y axis
+ * @param[in] xAxisLabel -- label for x axis
+ * @param[in] titleLabel -- label for chart title
+ * @param[in] selectTag -- tag for selecting target svg object
+ * @param[in] getSelectValues -- function to find active filtering options
+ * @param[in] aggregateData -- function to aggregate filtered data
+ * @param[in] adjustValues -- function to perform any final adjustments to
+ *  aggregated data
+ * @param[in] onClickFuct -- function to execute when bar chart bars are clicked
+ * */
 function updateBarChart(
     data,
     dataSelect,
