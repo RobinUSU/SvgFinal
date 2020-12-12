@@ -158,7 +158,7 @@ function sortCustom(cards){
          return 0;
       });
    }
-   
+
    // reverses the list as necessary
    if(value.includes("-")){
      cards.reverse();
