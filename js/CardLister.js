@@ -23,6 +23,7 @@ function initCardChart(selectTag, chartClass){
   sortButtonArea = svg.append('div');
   sortSelector = sortButtonArea.append('select');
   sortSelector.attr("id", "sortSelector");
+  sortSelector.append("option").attr("value","none").html("None");
   sortSelector.append("option").attr("value","alpha").html("Alphabetical Order");
   sortSelector.append("option").attr("value","-alpha").html("Reverse Alphabetical Order");
   sortSelector.append("option").attr("value","manaCost").html("Mana Cost High to Low");
@@ -65,7 +66,7 @@ function updateCardChart(data) {
   if(data!=cardChartData){
     // console.log(data);
     cardChartData = data;
-    curCard = data[0];
+    curCard = sortCustom(data)[0];
     pageIndex = 0;
   }
 
@@ -84,9 +85,20 @@ function updateCardChart(data) {
   // console.log(cards);
 
   // removes the table
-  svg.selectAll("table").remove();
+  svg.selectAll("table,.tableLabel,.tableLabelDeck").remove();
 
   // appends the table
+  svg.append("div").attr("class", function(m){
+    if(!deckView){
+      return "tableLabel";
+    }
+    return "tableLabelDeck"
+  }).html(function(m){
+      if(deckView){
+        return "Deck View";
+      }
+      return "All Card View";
+    });
   table = svg.append('table').attr('class','cardTable');
 
   // adds the table header
@@ -94,14 +106,21 @@ function updateCardChart(data) {
   header.append('th').html("Name");
   header.append('th').html("Total Mana Cost");
   header.append('th').html("Type");
+  header.append('th')
+
 
   // adds the table contents
-  let rows = table.selectAll('.tableRow')
+  let rows = table.selectAll('.tableRow,.tableRowInDeck')
     .data(cards).enter()
     .append('tr')
-    .attr("class", "tableRow")
+    .attr("class", function(m){
+      if(deck.includes(m)){
+        return "tableRowInDeck";
+      }
+
+      return "tableRow";
+    })
     .on('click', function(m){
-      addCardToDeck(m);
       updateCardDetailChart(m);
       curCard = m;
     })
@@ -117,14 +136,24 @@ function updateCardChart(data) {
   rows.append('td').html(function(m){return displayableString(getManaCost(m));});
   rows.append('td').html(function(m){return displayableString(m.type)});
 
+  if(!deckView){
+    rows.append('th').append("button").html("Add to Deck").on("click", function(m){
+          addCardToDeck(m);
+          updateCardChart(data);});
+  }
+  else{
+    rows.append('th').append("button").html("Remove from Deck").on("click", function(m){
+          removeCardFromDeck(m);
+          updateCardChart(deck);});
+  }
+
 
   // adds the table footer buttons and page index display
   headerButtons = table.append("tr").attr("class", "tableHeader");
   headerButtons.append('th').append("button").html("Previous Page").on("click", function(m){changePage(-1)});
-  headerButtons.append('th').html("Current Page: " + pageIndex).append;
+  headerButtons.append('th').html("Current Page: " + pageIndex);
+  headerButtons.append('th').html("Total Pages: " +(((cardChartData.length / pageSize)|0)-1));
   headerButtons.append('th').append("button").html("Next Page").on("click", function(m){changePage(1)});
-
-
 }
 
 // sorts the cards passed in
@@ -159,7 +188,7 @@ function sortCustom(cards){
          return 0;
       });
    }
-   
+
    // reverses the list as necessary
    if(value.includes("-")){
      cards.reverse();

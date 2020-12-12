@@ -71,7 +71,6 @@ function update()
 
   updateCardChart(data);
 
-  updateImage(data[0]);
   // ==========================================================================
 }
 

@@ -1,13 +1,21 @@
 let deck = [];
 let deckView = false;
 
-/* Adds given card to deck 
+/* Adds given card to deck
  *
  * @param[in] card -- card to add to deck
  * */
 function addCardToDeck(card)
 {
-  deck.push(card);
+  if(!deck.includes(card)){
+    deck.push(card);
+  }
+}
+
+function removeCardFromDeck(card){
+  if(deck.includes(card)){
+    deck.splice(deck.indexOf(card),1);
+  }
 }
 
 /* Activates or Deactivates deck depending on current state, then update page*/
